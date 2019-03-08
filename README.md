@@ -22,8 +22,8 @@ ___
    - You can then `git commit` into that branch with all your changes.
 
    - **Once you have a fully functional feature:**
-           -  `git merge master` <---- Merges your branch to the master repo.
-           -  If you get any conflicts merging, contact me to help resolve them.
+      -  `git merge master` <---- Merges your branch to the master repo.
+      -  If you get any conflicts merging, contact me to help resolve them.
 
 
 ##### Initial Instructions
