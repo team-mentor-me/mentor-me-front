@@ -3,7 +3,7 @@
 - every frontend/UI developer will be working on this repo, but on separate branches.
 
 - after git cloning THIS repo, do:
-  - `git branch [firstname-lastname]` <-----  creates the branch with your first and last name as branch name
+  - `git branch [firstname-lastname]` <-----  creates the branch with your first and last name as branch name //exclude the []'s
   - `git checkout [firstname-lastname]` <---- switches your working directory into your newly created branch
    
    you can then `git commit` into that branch wth all your changes.
