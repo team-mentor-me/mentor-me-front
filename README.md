@@ -1,12 +1,13 @@
 # Mentor Me 
 ___
 
-### Hunter's couple of notes
+### Hunter's notes
 #### Don't **Fork** the Repo
 ##### Git Instructions
+
 - Every frontend/UI developer will be working on this repo, but on separate branches.
 
-- After git cloning THIS repo, do:
+- After git cloning THIS repo:
    
    - You may need to `git pull` before creating a new branch.
    
