@@ -16,9 +16,9 @@ ___
   
   - `git push -u origin [firstname-lastname]` <-- Pushes that branch to github.
 
-      - subsequent pushes after the above push can be done with `git push [firstname-lastname]`
+      - Subsequent pushes after the above push can be done with `git push [firstname-lastname]`.
    
-   you can then `git commit` into that branch wth all your changes.
+   - You can then `git commit` into that branch wth all your changes.
 
 ##### Initial Instructions
 - You still need to run `yarn install` to get your node_modules.
