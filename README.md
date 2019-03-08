@@ -1,10 +1,16 @@
 ## Hunter's couple of notes
-
+#### Don't **Fork** the Repo
 - every frontend/UI developer will be working on this repo, but on separate branches.
 
 - after git cloning THIS repo, do:
-  - `git branch [firstname-lastname]` <-----  creates the branch with your first and last name as branch name //exclude the []'s
+   
+   - you may need to `git pull` before creating a new branch
+   
+  - `git branch [firstname-lastname]` <-----  creates the branch with your first and last name as branch name 
+     
   - `git checkout [firstname-lastname]` <---- switches your working directory into your newly created branch
+  
+  - `git push origin [firstname-lastname]` <--pushes that branch to github
    
    you can then `git commit` into that branch wth all your changes.
 
