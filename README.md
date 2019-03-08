@@ -1,4 +1,7 @@
-## Hunter's couple of notes
+# Mentor Me 
+___
+
+### Hunter's couple of notes
 #### Don't **Fork** the Repo
 - every frontend/UI developer will be working on this repo, but on separate branches.
 
