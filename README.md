@@ -26,7 +26,7 @@ ___
 
 - This is the front end repo, I forgot to include front end in the name and changing it would be rough. 
 
-- netlify deployed site: https://epic-meitner-afa3b4.netlify.com/
+- Netlify deployed site: https://epic-meitner-afa3b4.netlify.com/
 
 - Reach out if you need help.
 
