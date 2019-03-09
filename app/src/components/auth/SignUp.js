@@ -3,6 +3,7 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import { signup } from "../../actions";
 import { Redirect } from "react-router-dom";
+import { LoginStyled } from "./Login";
 
 import { connect } from "react-redux";
 
@@ -13,16 +14,23 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
   }
 
   return (
-    <>
+    <LoginStyled register>
       <h1>Sign Up</h1>
       <Form>
-        <Field name="username" type="text" />
-        <Field name="country" type="text" />
-        <Field name="email" type="email" />
-        <Field name="password" type="password" />
-        <button>Sign Up</button>
+        {touched.username && errors.username && <p>{errors.username}</p>}
+        <Field name="username" type="text" placeholder="Full Name" />
+        {touched.country && errors.country && <p>{errors.country}</p>}
+        <Field name="country" type="text" placeholder="Country" />
+        {touched.email && errors.email && <p>{errors.email}</p>}
+        <Field name="email" type="email" placeholder="Email" />
+        {touched.password && errors.password && <p>{errors.password}</p>}
+        <Field name="password" type="password" placeholder="Password" />
+        <button>
+          <i className="far fa-edit" /> Sign Up
+        </button>
       </Form>
-    </>
+      <div />
+    </LoginStyled>
   );
 };
 
@@ -30,15 +38,16 @@ const enhancedForm = withFormik({
   mapPropsToValues(props) {
     return {
       email: props.email,
-      password: props.password,
+      username: props.username,
       country: props.country,
       password: props.password
     };
   },
   validationSchema: yup.object().shape({
-    email: yup.string().required("Email might be wrong"),
-    password: yup.string().required("Password might be incorrect"),
-    username: yup.string().required("This field is required")
+    email: yup.string().required("Email is required"),
+    password: yup.string().required("Password is required"),
+    username: yup.string().required("This field is required"),
+    country: yup.string().required("Country is required")
   }),
   handleSubmit(formVals, { props }) {
     props.signup(formVals).then(() => props.history.push("/"));
