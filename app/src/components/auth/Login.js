@@ -2,17 +2,25 @@ import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import { login } from "../../actions";
+import { Redirect, Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-const Login = ({ errors, touched }) => {
+const Login = ({ errors, touched, isLoggedIn }) => {
+  if (isLoggedIn) {
+    return <Redirect to="/" />;
+  }
+
   return (
-    <Form>
+    <>
       <h1>Sign In</h1>
-      <Field name="email" type="email" />
-      <Field name="password" type="password" />
-      <button>Sign In</button>
-    </Form>
+      <Form>
+        <Field name="email" type="email" />
+        <Field name="password" type="password" />
+        <button>Sign In</button>
+      </Form>
+      <Link to="/signup">Sign Up</Link>
+    </>
   );
 };
 
@@ -32,7 +40,11 @@ const enhancedForm = withFormik({
   }
 })(Login);
 
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { login }
 )(enhancedForm);
