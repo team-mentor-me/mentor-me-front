@@ -1,8 +1,9 @@
 import { LOGIN_ATTEMPT, LOGIN_SUCCESS } from "../actions/types";
 
+// change back to false - isLoggedIn
 const initialStore = {
   questions: [],
-  isLoggedIn: false,
+  isLoggedIn: true,
   loadingAuth: null
 };
 

@@ -91,7 +91,6 @@ const Login = ({ errors, touched, isLoggedIn }) => {
       <Form>
         {touched.email && errors.email && <p>{errors.email}</p>}
         <Field name="email" type="email" placeholder="email" />
-
         {touched.email && errors.email && <p>{errors.email}</p>}
         <Field name="password" type="password" placeholder="password" />
         <button>Sign In</button>
