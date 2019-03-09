@@ -4,6 +4,8 @@ import { Route, BrowserRouter } from "react-router-dom";
 import Index from "./main/Index";
 import SignUp from "./auth/SignUp";
 import { createGlobalStyle } from "styled-components";
+import SingleQuestion from "./singleQuestion/SingleQuestion";
+import Search from "./main/Search";
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -49,9 +51,13 @@ table {
 	border-spacing: 0;
 }
 
-box-sizing: border-box;
+* {
+	box-sizing: border-box;
+}
+
 html, body {
-  font-size: 62.5%;
+	font-size: 62.5%;
+	font-family: sans-serif;
 }
 `;
 
@@ -63,6 +69,8 @@ function App() {
         <Route path="/" exact component={Index} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/search" component={Search} />
+        <Route path="/question/:id" component={SingleQuestion} />
       </>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Nav = styled.nav`
   width: 90%;
@@ -38,7 +39,9 @@ function Top(props) {
       <Search>
         <i className="fas fa-sliders-h" />
         <h3>Question Feed</h3>
-        <i className="fas fa-search" />
+        <Link to="/search">
+          <i className="fas fa-search" />
+        </Link>
       </Search>
     </Nav>
   );

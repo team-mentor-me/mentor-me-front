@@ -26,7 +26,7 @@ const Content = styled.div`
 
   h3 {
     font-size: 2rem;
-    color: white;
+    color: #fff;
     text-align: center;
     margin-bottom: 5%;
   }
@@ -50,8 +50,8 @@ const Content = styled.div`
 function Question({ question }) {
   return (
     <QuestionStyled>
-      <Link to="/">
-        <img src={question.user.photoUrl} alt="user image" />
+      <Link to={`/question/${question.id}`}>
+        <img src={question.user.photoUrl} alt="user" />
         <Content>
           <h3>{question.user.name}</h3>
           <h5>{question.category}</h5>
