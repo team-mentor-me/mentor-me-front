@@ -1,4 +1,4 @@
-import { LOGIN_ATTEMPT, LOGIN_SUCCESS } from "../actions/types";
+import { LOGIN_ATTEMPT, LOGIN_SUCCESS, ADD_QUESTION } from "../actions/types";
 
 // change back to false - isLoggedIn
 const initialStore = {
@@ -50,6 +50,9 @@ export default (state = initialStore, action) => {
       return { ...state, loadingAuth: true };
     case LOGIN_SUCCESS:
       return { ...state, loadingAuth: false, isLoggedIn: true };
+    case ADD_QUESTION:
+      const newQuestions = [...state.questions, action.payload];
+      return { ...state, questions: newQuestions };
     default:
       return state;
   }

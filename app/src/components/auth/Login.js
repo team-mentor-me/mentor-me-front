@@ -101,10 +101,10 @@ const Login = ({ errors, touched, isLoggedIn }) => {
 };
 
 const enhancedForm = withFormik({
-  mapPropsToValues(props) {
+  mapPropsToValues() {
     return {
-      email: props.email,
-      password: props.password
+      email: "",
+      password: ""
     };
   },
   validationSchema: yup.object().shape({

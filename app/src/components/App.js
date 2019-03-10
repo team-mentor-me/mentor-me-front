@@ -8,6 +8,7 @@ import SingleQuestion from "./singleQuestion/SingleQuestion";
 import Search from "./main/Search";
 import { connect } from "react-redux";
 import Footer from "./main/Footer";
+import Ask from "./ask/Ask";
 
 function App(props) {
   return (
@@ -18,6 +19,7 @@ function App(props) {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/search" component={Search} />
+        <Route path="/ask" component={Ask} />
         <Route path="/question/:id" component={SingleQuestion} />
         {props.isLoggedIn && <Footer />}
       </>
