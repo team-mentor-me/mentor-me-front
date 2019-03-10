@@ -5,7 +5,6 @@ import Top from "./Top";
 import Question from "./Question";
 
 function Index(props) {
-  console.log(props.isLoggedIn);
   if (!props.isLoggedIn) {
     return <Redirect to="/login" />;
   }

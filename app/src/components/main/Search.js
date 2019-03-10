@@ -62,8 +62,9 @@ function Search(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newRes = props.questions.filter(q => q.category.includes(search));
-    console.log(newRes);
+    const newRes = props.questions.filter(q =>
+      q.category.toLowerCase().includes(search.toLowerCase())
+    );
     setQs(newRes);
   }
 
@@ -86,7 +87,7 @@ function Search(props) {
           </button>
         </form>
         {qs.map(q => (
-          <Question question={q} />
+          <Question key={q.id} question={q} />
         ))}
       </MainContent>
     </>

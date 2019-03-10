@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { signup } from "../../actions";
 import { Redirect } from "react-router-dom";
 import { LoginStyled } from "./Login";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -29,7 +30,7 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
           <i className="far fa-edit" /> Sign Up
         </button>
       </Form>
-      <div />
+      <Link to="/login">Login</Link>
     </LoginStyled>
   );
 };
