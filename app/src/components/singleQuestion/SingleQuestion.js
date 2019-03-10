@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
+import { Link } from "react-router-dom";
 
 const UserDetails = styled.div`
   position: relative;
@@ -52,6 +53,13 @@ const QuestionDiv = styled.div`
       line-height: 1.45;
     }
   }
+
+  a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
 `;
 
 function SingleQuestion({ question }) {
@@ -68,9 +76,11 @@ function SingleQuestion({ question }) {
             <p>{question.description}</p>
           </div>
 
-          <BtnPrimary width="87%">
-            <i className="fas fa-user-plus" /> Respond
-          </BtnPrimary>
+          <Link to={`/conversation/22`}>
+            <BtnPrimary width="87%">
+              <i className="fas fa-user-plus" /> Respond
+            </BtnPrimary>
+          </Link>
         </QuestionDiv>
       </div>
     </div>
