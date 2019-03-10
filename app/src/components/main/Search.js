@@ -36,23 +36,23 @@ const MainContent = styled.div`
         color: inherit;
       }
     }
+  }
+`;
 
-    button {
-      width: 90%;
-      font-size: 1.4rem;
-      background-image: linear-gradient(to right, #60c3ff, #5574f7);
-      color: white;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 5%;
-      outline: none;
-      word-spacing: 0.7rem;
-      margin-bottom: 10%;
+export const BtnPrimary = styled.button`
+  width: ${props => props.width};
+  font-size: 1.4rem;
+  background-image: linear-gradient(to right, #60c3ff, #5574f7);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 5%;
+  outline: none;
+  word-spacing: 0.7rem;
+  margin-bottom: 10%;
 
-      i {
-        font-size: 1.4rem;
-      }
-    }
+  i {
+    font-size: 1.4rem;
   }
 `;
 
@@ -82,9 +82,9 @@ function Search(props) {
             onChange={e => setSearch(e.target.value)}
             autoComplete="off"
           />
-          <button>
+          <BtnPrimary width="90%">
             <i className="fas fa-search" /> Find
-          </button>
+          </BtnPrimary>
         </form>
         {qs.map(q => (
           <Question key={q.id} question={q} />
