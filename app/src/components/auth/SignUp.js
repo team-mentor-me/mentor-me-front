@@ -36,12 +36,12 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
 };
 
 const enhancedForm = withFormik({
-  mapPropsToValues(props) {
+  mapPropsToValues() {
     return {
-      email: props.email,
-      username: props.username,
-      country: props.country,
-      password: props.password
+      email: "",
+      username: "",
+      country: "",
+      password: ""
     };
   },
   validationSchema: yup.object().shape({

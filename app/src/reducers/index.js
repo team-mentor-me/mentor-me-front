@@ -1,4 +1,9 @@
-import { LOGIN_ATTEMPT, LOGIN_SUCCESS, ADD_QUESTION } from "../actions/types";
+import {
+  LOGIN_ATTEMPT,
+  LOGIN_SUCCESS,
+  ADD_QUESTION,
+  ADD_MESSAGE
+} from "../actions/types";
 
 // change back to false - isLoggedIn
 const initialStore = {
@@ -106,6 +111,32 @@ export default (state = initialStore, action) => {
     case ADD_QUESTION:
       const newQuestions = [...state.questions, action.payload];
       return { ...state, questions: newQuestions };
+    case ADD_MESSAGE:
+      const newMessages = state.currentUser.messages.map(msg => {
+        if (msg.withWho.name === action.payload.withWho) {
+          return {
+            ...msg,
+            listOfMessages: [
+              ...msg.listOfMessages,
+              {
+                date: "23456789",
+                text: action.payload.text,
+                user: {
+                  name: state.currentUser.fullName,
+                  id: state.currentUser.id
+                },
+                id: "9"
+              }
+            ]
+          };
+        }
+        return msg;
+      });
+      console.log(newMessages);
+      return {
+        ...state,
+        currentUser: { ...state.currentUser, messages: newMessages }
+      };
     default:
       return state;
   }
