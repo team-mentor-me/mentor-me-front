@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import Question from "./Question";
 import SearchTop from "./SearchTop";
-import Header from "./Header";
 
 const MainContent = styled.div`
   margin-top: 8%;
@@ -72,7 +71,6 @@ function Search(props) {
 
   return (
     <>
-      <Header />
       <SearchTop />
       <MainContent>
         <p className="question">What would you like to help with?</p>

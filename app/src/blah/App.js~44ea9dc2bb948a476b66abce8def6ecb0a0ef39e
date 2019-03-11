@@ -42,7 +42,7 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.isLoggedIn,
+  isLoggedIn: state.questions.isLoggedIn,
   user: state.currentUser
 });
 

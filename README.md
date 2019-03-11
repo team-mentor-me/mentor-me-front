@@ -26,7 +26,8 @@ ___
          -  If there are any problems, I will work you through it.
 
    - Don't commit your node_modules directory!!! Within your `.gitignore` file, make sure you have typed `/node_modules` on a new line.
-
+   
+   Sometimes you may need to try ```git pull origin master``` and do somefunky stuff. If you get stuck, message me and I will do my best to help you. 
 
 ##### Initial Instructions
 

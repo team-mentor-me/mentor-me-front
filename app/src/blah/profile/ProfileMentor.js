@@ -16,14 +16,14 @@ width: 100%;
 background-image: ;
 margin: 0 auto;
 text-align: center;
-background-color: #60C3FF;
+background: linear-gradient(45deg, rgba(85,116,247,1) 0%,rgba(96,195,255,1) 100%);
 `;
 const Img = styled.img`
 margin-bottom: -7%;
 margin-left: -50%;
 border: solid white 9px;
-max-width: 300px;
-max-length: 300px;
+max-width: 240px;
+max-length: 240px;
 border-radius:7px;
 `;
 const H1 = styled.h1`
@@ -55,16 +55,13 @@ function ProfileMentor({ profile }) {
   return (
     <StyledProfile>
       <Head>
-      
-      <H1>{profile.fullName}</H1>
-      <P>Skill,Location</P>
-      <Img src={profile.photoUrl} alt="user" />
+        <H1>{profile.fullName}</H1>
+        <P>Skill,Location</P>
+        <Img src={profile.photoUrl} alt="user" />
       </Head>
       <H3>about</H3>{/*add questions too so they can switch between mentors about page and their posted questions */}
-     
       <Title>Sharing my experience with aspiring Photographers</Title>
       <P2>blah blah</P2>
-     
     </StyledProfile>
   );
 }
