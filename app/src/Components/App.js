@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import Footer from "./main/Footer";
 import Ask from "./ask/Ask";
 import Messages from "./messages/Messages";
+//import Profile from './profile/Profile';
 
 function App(props) {
   return (
@@ -23,7 +24,8 @@ function App(props) {
         <Route path="/ask" component={Ask} />
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
-        {props.isLoggedIn && <Footer />}
+        {/*<Route path="/profile" component={ProfileStudent} />*/}
+              {props.isLoggedIn && <Footer />}
       </>
     </BrowserRouter>
   );

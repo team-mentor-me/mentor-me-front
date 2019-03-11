@@ -64,12 +64,16 @@ const QuestionDiv = styled.div`
 
 function SingleQuestion({ question }) {
   return (
+    
     <div>
+      <Link to="/profile/ProfileStudent">
       <UserDetails>
         <h1>{question.user.name}</h1>
       </UserDetails>
       <Img src={question.user.photoUrl} alt="user" />
+      </Link>
       <div>
+      
         <QuestionDiv>
           <div>
             <h3>Question</h3>
