@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import Footer from "../main/Footer";
+
 
 //styles
 const HeaderImg = styled.img``;

@@ -8,7 +8,8 @@ const StyledProfile = styled.div`
 display: flex;
 flex-direction: column;
 font-size: 2rem;
-background-color: red;
+background-color: white;
+height: auto;
 `;
 const Head = styled.div`
 width: 100%;
@@ -18,7 +19,7 @@ text-align: center;
 background-color: #60C3FF;
 `;
 const Img = styled.img`
-margin-bottom: -10%;
+margin-bottom: -7%;
 margin-left: -50%;
 border: solid white 9px;
 max-width: 300px;
@@ -32,12 +33,23 @@ margin-top: 17%;
 const P = styled.p`
 padding-bottom: 10%;
 `;
-const About = styled.div`
-margin-top: 10%;
+const Title = styled.div`
+text-align:center;
+margin-top: 14%;
+font-weight: bold
 `;
 const H3 = styled.h3`
-padding-left: 15%;`
-co
+margin-top: 12%;
+margin-bottom: -10%;
+padding-left: 15%;
+padding-bottom: 10px;
+border-bottom: solid black 2px;
+;`
+const P2 = styled.p`
+text-align:center;
+padding: 20px;
+height: auto;`
+
 
 function ProfileMentor({ profile }) {
   return (
@@ -48,11 +60,11 @@ function ProfileMentor({ profile }) {
       <P>Skill,Location</P>
       <Img src={profile.photoUrl} alt="user" />
       </Head>
-      <About>
       <H3>about</H3>{/*add questions too so they can switch between mentors about page and their posted questions */}
-      <h1>Sharing my experience with aspiring Photographers</h1>
-      <p>blah blah</p>
-      </About>
+     
+      <Title>Sharing my experience with aspiring Photographers</Title>
+      <P2>blah blah</P2>
+     
     </StyledProfile>
   );
 }
