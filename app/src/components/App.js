@@ -18,9 +18,10 @@ function App(props) {
     <BrowserRouter>
       <>
         <GlobalStyle />
-        <Route path="/" exact component={Index} />
+
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/" exact component={Index} />
         <Route path="/search" component={Search} />
         <Route path="/ask" component={Ask} />
         <Route path="/conversation/:id" component={Messages} />
@@ -42,7 +43,7 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.questions.isLoggedIn,
+  isLoggedIn: state.currentUser.isLoggedIn,
   user: state.currentUser
 });
 
