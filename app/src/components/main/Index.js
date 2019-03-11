@@ -6,6 +6,7 @@ import Question from "./Question";
 import { fetchQuestions } from "../../actions";
 
 function Index(props) {
+  console.log(props);
   if (!props.isLoggedIn) {
     return <Redirect to="/login" />;
   }
@@ -27,7 +28,7 @@ function Index(props) {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    isLoggedIn: state.questions.isLoggedIn,
+    isLoggedIn: state.currentUser.isLoggedIn,
     questions: state.questions.questions
   };
 };

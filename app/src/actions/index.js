@@ -2,7 +2,8 @@ import axios from "axios";
 import {
   LOGIN_ATTEMPT,
   LOGIN_SUCCESS,
-  ADD_QUESTION,
+  ADD_QUESTION_ATTEMPT,
+  ADD_QUESTION_SUCCESS,
   ADD_MESSAGE,
   FETCH_QUESTIONS_ATTEMPT,
   FETCH_QUESTIONS_SUCCESS
@@ -20,7 +21,7 @@ export const login = formVals => async dispatch => {
   const res = await axios.post(`${url}/api/login`, formVals);
   console.log(res);
   localStorage.setItem("mentorMeToken", res.data.token);
-  dispatch({ type: LOGIN_SUCCESS });
+  dispatch({ type: LOGIN_SUCCESS, payload: res.data.user_id });
 };
 
 export const signup = formVals => async dispatch => {
@@ -30,7 +31,7 @@ export const signup = formVals => async dispatch => {
   console.log(res);
   console.log(res.message);
   localStorage.setItem("mentorMeToken", res.data.token);
-  dispatch({ type: LOGIN_SUCCESS });
+  dispatch({ type: LOGIN_SUCCESS, payload: res.data.user_id });
 };
 
 export const fetchQuestions = () => async dispatch => {
@@ -44,8 +45,11 @@ export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };
 
-export const addQuestion = formVals => async dispatch => {
-  dispatch({ type: ADD_QUESTION, payload: formVals });
+export const addQuestion = (formVals, id) => async dispatch => {
+  dispatch({ type: ADD_QUESTION_ATTEMPT });
+  const vals = { ...formVals, type: "question", user_id: id };
+  const res = await axios.post("/api/posts", vals);
+  dispatch({ type: ADD_QUESTION_SUCCESS, payload: res.data });
 };
 
 export const addMessage = formVals => async dispatch => {
