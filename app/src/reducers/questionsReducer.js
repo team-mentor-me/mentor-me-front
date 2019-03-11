@@ -1,4 +1,10 @@
-import { LOGIN_ATTEMPT, LOGIN_SUCCESS, ADD_QUESTION } from "../actions/types";
+import {
+  LOGIN_ATTEMPT,
+  LOGIN_SUCCESS,
+  ADD_QUESTION,
+  FETCH_QUESTIONS_ATTEMPT,
+  FETCH_QUESTIONS_SUCCESS
+} from "../actions/types";
 
 const initialStore = {
   questions: [
@@ -40,7 +46,8 @@ const initialStore = {
     }
   ],
   isLoggedIn: false,
-  loadingAuth: null
+  loadingAuth: null,
+  fetchingQs: false
 };
 
 export default (state = initialStore, action) => {
@@ -52,7 +59,13 @@ export default (state = initialStore, action) => {
     case ADD_QUESTION:
       const newQuestions = [...state.questions, action.payload];
       return { ...state, questions: newQuestions };
+    case FETCH_QUESTIONS_ATTEMPT:
+      return { ...state, fetchingQs: true };
+    case FETCH_QUESTIONS_SUCCESS:
+      const { questions } = action.payload;
 
+      console.log(questions);
+      return { ...state, questions };
     default:
       return state;
   }

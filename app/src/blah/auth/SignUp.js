@@ -9,25 +9,24 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const SignUp = ({ errors, touched, isLoggedIn }) => {
-  console.log("mounted");
   if (isLoggedIn) {
     return <Redirect to="/" />;
   }
 
   return (
     <LoginStyled register>
-      <h1>Sign Up</h1>
+      <h1>Register</h1>
       <Form>
         {touched.username && errors.username && <p>{errors.username}</p>}
-        <Field name="username" type="text" placeholder="Full Name" />
-        {touched.country && errors.country && <p>{errors.country}</p>}
-        <Field name="country" type="text" placeholder="Country" />
+        <Field name="username" type="text" placeholder="Username" />
+        {touched.name && errors.name && <p>{errors.name}</p>}
+        <Field name="name" type="text" placeholder="Full Name" />
         {touched.email && errors.email && <p>{errors.email}</p>}
         <Field name="email" type="email" placeholder="Email" />
         {touched.password && errors.password && <p>{errors.password}</p>}
         <Field name="password" type="password" placeholder="Password" />
         <button>
-          <i className="far fa-edit" /> Sign Up
+          <i className="far fa-edit" /> Register
         </button>
       </Form>
       <Link to="/login">Login</Link>
@@ -40,7 +39,7 @@ const enhancedForm = withFormik({
     return {
       email: "",
       username: "",
-      country: "",
+      name: "",
       password: ""
     };
   },
@@ -48,7 +47,7 @@ const enhancedForm = withFormik({
     email: yup.string().required("Email is required"),
     password: yup.string().required("Password is required"),
     username: yup.string().required("This field is required"),
-    country: yup.string().required("Country is required")
+    name: yup.string().required("Full Name is required")
   }),
   handleSubmit(formVals, { props }) {
     props.signup(formVals).then(() => props.history.push("/"));
