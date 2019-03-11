@@ -37,7 +37,7 @@ function App(props) {
             );
           }}
         />*/}
-        {props.isLoggedIn && <Footer />}
+        {props.isLoggedIn} && <Footer />}
       </>
     </BrowserRouter>
   );
