@@ -37,6 +37,7 @@ margin-top: 10%;
 `;
 const H3 = styled.h3`
 padding-left: 15%;`
+co
 
 function ProfileMentor({ profile }) {
   return (
