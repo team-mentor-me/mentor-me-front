@@ -22,9 +22,10 @@ ___
    - You can then `git commit` into that branch with all your changes.
 
    - **Once you have a fully functional feature:**
-      - Contact me or yor PM *BEFORE* merging
-         -  `git merge master` <---- Merges your branch to the master repo.
-         -  We will help resolve merge conflicts if they come up.
+      - Submit a PR through GitHub
+         -  If there are any problems, I will work you through it.
+
+   - Don't commit your node_modules directory!!! Within your `.gitignore` file, make sure you have typed `/node_modules` on a new line.
 
 
 ##### Initial Instructions
@@ -34,3 +35,4 @@ ___
 - Netlify deployed site: https://epic-meitner-afa3b4.netlify.com/
 
 - Reach out if you need help.
+
