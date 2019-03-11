@@ -15,7 +15,7 @@ function ProfileMentor({ profile }){
                 <p>Skill,Location</p>
                 {/*rating star system*/}
             </HeaderImg>
-            <Img src={profile.user.photoUrl} alt="user"/>
+            <img src={profile.user.photoUrl} alt="user"/>
             <h4>about</h4>{/*add questions too so they can switch between mentors about page and their posted questions */}
             <About>
             <h1>Sharing my experience with aspiring Photographers</h1>

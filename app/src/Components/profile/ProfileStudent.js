@@ -16,7 +16,7 @@ function ProfileStudent({ profile }){
                 {/*rating star system*/}
             </HeaderImg>
             {/* + mentor me*/}
-            <Img src={profile.user.photoUrl} alt="user"/>
+            <img src={profile.user.photoUrl} alt="user"/>
             <h4>about</h4>{/*add questions too so they can switch between students about page and their posted questions */}
             <About>
             <h1>Trying to level up my skills as nature photographer.</h1>
