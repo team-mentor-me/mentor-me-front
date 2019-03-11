@@ -30,6 +30,9 @@ function Footer() {
       <NavLink exact to="/" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-home" />
       </NavLink>
+      <NavLink to="/profile/MentorProlife">
+        <i className="far fa-user" />
+      </NavLink>
       <NavLink to="/messages" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-user-friends" />
       </NavLink>

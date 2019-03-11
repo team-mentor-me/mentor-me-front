@@ -65,10 +65,12 @@ const QuestionDiv = styled.div`
 function SingleQuestion({ question }) {
   return (
     <div>
-      <UserDetails>
-        <h1>{question.user.name}</h1>
-      </UserDetails>
-      <Img src={question.user.photoUrl} alt="user" />
+      <Link style={{ textDecoration: "none" }} to="/profile/ProfileStudent">
+        <UserDetails>
+          <h1>{question.user.name}</h1>
+        </UserDetails>
+        <Img src={question.user.photoUrl} alt="user" />
+      </Link>
       <div>
         <QuestionDiv>
           <div>

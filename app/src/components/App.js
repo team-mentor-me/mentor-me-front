@@ -8,8 +8,11 @@ import SingleQuestion from "./singleQuestion/SingleQuestion";
 import Search from "./main/Search";
 import { connect } from "react-redux";
 import Footer from "./main/Footer";
+import Header from "./main/Header";
 import Ask from "./ask/Ask";
 import Messages from "./messages/Messages";
+import ProfileMentor from "./profile/ProfileMentor";
+import ProfileStudent from "./profile/ProfileStudent";
 
 function App(props) {
   return (
@@ -23,6 +26,16 @@ function App(props) {
         <Route path="/ask" component={Ask} />
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
+        <Route
+          path="/profile"
+          render={propss => {
+            return props.user.status === "mentor" ? (
+              <ProfileMentor {...propss} />
+            ) : (
+              <ProfileStudent {...propss} />
+            );
+          }}
+        />
         {props.isLoggedIn && <Footer />}
       </>
     </BrowserRouter>
@@ -30,7 +43,8 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.isLoggedIn
+  isLoggedIn: state.isLoggedIn,
+  user: state.currentUser
 });
 
 export default connect(mapStateToProps)(App);
