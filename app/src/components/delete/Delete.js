@@ -1,5 +1,7 @@
 import React from "react";
 import Modal from "../../utils/Modal";
+import { connect } from "react-redux";
+import { deleteQuestion } from "../../actions";
 
 function Delete(props) {
   function onDismiss(e) {
@@ -8,7 +10,9 @@ function Delete(props) {
   }
 
   function onDelete() {
-    // props.deleteNote(props.match.params.id).then(() => props.history.push("/"));
+    props
+      .deleteQuestion(props.match.params.id)
+      .then(() => props.history.push("/"));
   }
 
   return (
@@ -18,4 +22,9 @@ function Delete(props) {
   );
 }
 
-export default Delete;
+// const mapStateToProps =
+
+export default connect(
+  null,
+  { deleteQuestion }
+)(Delete);

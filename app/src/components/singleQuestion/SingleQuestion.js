@@ -32,7 +32,7 @@ const QuestionDiv = styled.div`
   height: 67vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   div {
     h3 {
@@ -62,21 +62,34 @@ const QuestionDiv = styled.div`
   }
 `;
 
-function SingleQuestion({ question }) {
+function SingleQuestion({ question, currentUser }) {
+  console.log(question);
+  function displayButtons() {
+    if (currentUser.id !== question.user_id) {
+      return (
+        <>
+          <Link to={`/delete/${question.post_id}`}>Delete</Link>
+          <Link to={`/edit/${question.post_id}`}>Edit</Link>
+        </>
+      );
+    }
+  }
+
   return (
     <div>
       <Link style={{ textDecoration: "none" }} to="/profile/ProfileStudent">
         <UserDetails>
-          <h1>Placeholder</h1>
+          <h1>{question.name}</h1>
         </UserDetails>
-        <Img src={question.photo_path} alt="user" />
+        <Img src={question.photo} alt="user" />
       </Link>
       <div>
         <QuestionDiv>
           <div>
             <h3>Question</h3>
-            <Link to={`/delete/${question.id}`}>Delete</Link>
-            <p>{question.post}</p>
+            {displayButtons()}
+
+            <p>{question.description}</p>
           </div>
 
           <Link to={`/conversation/22`}>
@@ -92,12 +105,15 @@ function SingleQuestion({ question }) {
 
 const mapStateToProps = (state, ownProps) => {
   console.log(
-    state.questions.questions.find(q => q.id + "" === ownProps.match.params.id)
+    state.questions.questions.find(
+      q => q.post_id + "" === ownProps.match.params.id
+    )
   );
   return {
     question: state.questions.questions.find(
-      q => q.id + "" === ownProps.match.params.id
-    )
+      q => q.post_id + "" === ownProps.match.params.id
+    ),
+    currentUser: state.currentUser
   };
 };
 

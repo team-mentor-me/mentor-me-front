@@ -20,7 +20,7 @@ function Index(props) {
     <div>
       <Top />
       {props.questions.map(question => (
-        <Question question={question} key={question.id} />
+        <Question question={question} key={question.post_id} />
       ))}
     </div>
   );
