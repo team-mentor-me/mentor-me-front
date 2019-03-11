@@ -13,6 +13,7 @@ function Index(props) {
 
   useEffect(() => {
     props.fetchQuestions();
+    console.log("use effect");
   }, []);
 
   return (

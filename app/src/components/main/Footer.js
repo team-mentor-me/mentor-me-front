@@ -18,9 +18,7 @@ const FooterStyled = styled.footer`
   a {
     color: inherit;
 
-    .selected {
-      color: #5887f9;
-    }
+    cursor: pointer;
   }
 `;
 
@@ -33,12 +31,13 @@ function Footer() {
       <NavLink to="/profile/MentorProlife">
         <i className="far fa-user" />
       </NavLink>
+      <NavLink to="/ask" activeStyle={{ color: "#5887F9" }}>
+        <i className="fas fa-plus" />
+      </NavLink>
       <NavLink to="/messages" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-user-friends" />
       </NavLink>
-      <NavLink to="/ask" activeStyle={{ color: "#5887F9" }}>
-        <i className="far fa-comment" />
-      </NavLink>
+
       <NavLink to="/answers" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-key" />
       </NavLink>

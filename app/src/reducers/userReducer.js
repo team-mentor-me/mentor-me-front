@@ -52,7 +52,7 @@ const initialState = {
     }
   ],
   status: "mentor",
-  isLoggedIn: false,
+  isLoggedIn: true,
   loadingAuth: null
 };
 

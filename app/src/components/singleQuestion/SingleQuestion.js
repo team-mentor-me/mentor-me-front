@@ -75,6 +75,7 @@ function SingleQuestion({ question }) {
         <QuestionDiv>
           <div>
             <h3>Question</h3>
+            <Link to={`/delete/${question.id}`}>Delete</Link>
             <p>{question.post}</p>
           </div>
 
