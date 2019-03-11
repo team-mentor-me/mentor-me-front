@@ -19,7 +19,6 @@ function App(props) {
     <BrowserRouter>
       <>
         <GlobalStyle />
-        <Header/>
         <Route path="/" exact component={Index} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />

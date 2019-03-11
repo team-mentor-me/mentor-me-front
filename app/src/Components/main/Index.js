@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Top from "./Top";
 import Question from "./Question";
+import Header from './Header';
 
 function Index(props) {
   if (!props.isLoggedIn) {
@@ -11,8 +12,8 @@ function Index(props) {
 
   return (
     <div>
+    
       <Top />
-
       {props.questions.map(question => (
         <Question question={question} key={question.id} />
       ))}
