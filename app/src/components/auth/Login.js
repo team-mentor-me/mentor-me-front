@@ -89,11 +89,11 @@ const Login = ({ errors, touched, isLoggedIn }) => {
     <LoginStyled>
       <h1>Sign In</h1>
       <Form>
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <Field name="email" type="email" placeholder="email" />
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <Field name="password" type="password" placeholder="password" />
-        <button>Sign In</button>
+        {touched.username && errors.username && <p>{errors.username}</p>}
+        <Field name="username" placeholder="Username" />
+        {touched.password && errors.password && <p>{errors.password}</p>}
+        <Field name="password" type="password" placeholder="Password" />
+        <button type="submit">Sign In</button>
       </Form>
       <Link to="/signup">Register</Link>
     </LoginStyled>
@@ -103,15 +103,16 @@ const Login = ({ errors, touched, isLoggedIn }) => {
 const enhancedForm = withFormik({
   mapPropsToValues() {
     return {
-      email: "",
+      username: "",
       password: ""
     };
   },
   validationSchema: yup.object().shape({
-    email: yup.string().required("Email might be wrong"),
+    username: yup.string().required("Email might be wrong"),
     password: yup.string().required("Password might be incorrect")
   }),
   handleSubmit(formVals, { props }) {
+    console.log("hi");
     props.login(formVals).then(() => props.history.push("/"));
   }
 })(Login);

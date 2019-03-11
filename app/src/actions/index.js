@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   LOGIN_ATTEMPT,
   LOGIN_SUCCESS,
@@ -6,12 +7,27 @@ import {
 } from "./types";
 
 export const login = formVals => async dispatch => {
+  console.log("running");
   dispatch({ type: LOGIN_ATTEMPT });
+  const res = await axios.post(
+    `https://bw-mentor-me.herokuapp.com/api/login`,
+    formVals
+  );
+  console.log(res);
+  localStorage.setItem("mentorMeToken", res.token);
   dispatch({ type: LOGIN_SUCCESS });
 };
 
 export const signup = formVals => async dispatch => {
+  const vals = { ...formVals, role: "mentor" };
   dispatch({ type: LOGIN_ATTEMPT });
+  const res = await axios.post(
+    `https://bw-mentor-me.herokuapp.com/api/register`,
+    vals
+  );
+  console.log(res);
+  console.log(res.message);
+  localStorage.setItem("mentorMeToken", res.token);
   dispatch({ type: LOGIN_SUCCESS });
 };
 

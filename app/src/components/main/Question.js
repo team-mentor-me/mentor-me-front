@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Header from './Header';
 
 const QuestionStyled = styled.div`
   a {
@@ -50,9 +49,7 @@ const Content = styled.div`
 
 function Question({ question }) {
   return (
-    
     <QuestionStyled>
-      <Header/>
       <Link to={`/question/${question.id}`}>
         <img src={question.user.photoUrl} alt="user" />
         <Content>
