@@ -8,7 +8,6 @@ import SingleQuestion from "./singleQuestion/SingleQuestion";
 import Search from "./main/Search";
 import { connect } from "react-redux";
 import Footer from "./main/Footer";
-import Header from "./main/Header";
 import Ask from "./ask/Ask";
 import Messages from "./messages/Messages";
 import ProfileMentor from "./profile/ProfileMentor";
@@ -43,7 +42,7 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.isLoggedIn,
+  isLoggedIn: state.questions.isLoggedIn,
   user: state.currentUser
 });
 

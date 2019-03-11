@@ -90,7 +90,9 @@ function SingleQuestion({ question }) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  question: state.questions.find(q => q.id === ownProps.match.params.id)
+  question: state.questions.questions.find(
+    q => q.id === ownProps.match.params.id
+  )
 });
 
 export default connect(mapStateToProps)(SingleQuestion);
