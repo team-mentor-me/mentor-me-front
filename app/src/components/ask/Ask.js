@@ -145,22 +145,20 @@ const enhancedForm = withFormik({
   }),
   handleSubmit({ title, question, category }, { props }) {
     const vals = {
-      question: title,
+      post: title,
       description: question,
       category,
-      id: "4",
-      user: {
-        name: "Levi Cumbersome",
-        photoUrl:
-          "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/111554483/original/83d513acbc4b3716c9a474086bb633a5de3c2d74/create-social-media-avatars-in-minimalist-style.jpg"
-      }
+      type: "question",
+      photo_path: props.photoUrl,
+      user_fk: parseInt(props.user_id)
     };
-    props.addQuestion(vals, props.user_id).then(() => props.history.push("/"));
+    props.addQuestion(vals).then(() => props.history.push("/"));
   }
 })(Ask);
 
 const mapStateToProps = state => ({
-  user_id: state.currentUser.id
+  user_id: state.currentUser.id,
+  photoUrl: state.currentUser.photoUrl
 });
 
 export default connect(

@@ -10,7 +10,11 @@ import { connect } from "react-redux";
 export const LoginStyled = styled.div`
   height: auto;
   width: 100vw;
-  background: linear-gradient(to bottom, rgba(0,96,195,1) 0%,rgba(85,116,247,1) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 96, 195, 1) 0%,
+    rgba(85, 116, 247, 1) 100%
+  );
   font-family: canada-type-gibson, sans-serif;
   position: fixed;
   display: flex;
@@ -90,9 +94,9 @@ const Login = ({ errors, touched, isLoggedIn }) => {
     <LoginStyled>
       <h1>Sign In</h1>
       <Form>
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <Field name="email" type="email" placeholder="email" />
-        {touched.email && errors.email && <p>{errors.email}</p>}
+        {touched.username && errors.username && <p>{errors.username}</p>}
+        <Field name="username" type="text" placeholder="username" />
+        {touched.password && errors.password && <p>{errors.password}</p>}
         <Field name="password" type="password" placeholder="password" />
         <button>Sign In</button>
       </Form>
@@ -104,12 +108,12 @@ const Login = ({ errors, touched, isLoggedIn }) => {
 const enhancedForm = withFormik({
   mapPropsToValues() {
     return {
-      email: "",
+      username: "",
       password: ""
     };
   },
   validationSchema: yup.object().shape({
-    email: yup.string().required("Email might be wrong"),
+    username: yup.string().required("Email might be wrong"),
     password: yup.string().required("Password might be incorrect")
   }),
   handleSubmit(formVals, { props }) {
