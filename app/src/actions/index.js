@@ -15,35 +15,30 @@ import {
 
 // axios.defaults.headers.common["Content-Type"] = "application/json";
 
-const headers = {
-  Authorization: localStorage.getItem("mentorMeToken")
-};
-
 const url = "https://bw-mentor-me.herokuapp.com";
 
 export const login = formVals => async dispatch => {
-  console.log("running");
   dispatch({ type: LOGIN_ATTEMPT });
   const res = await axios.post(`${url}/api/login`, formVals);
-  console.log(res);
   localStorage.setItem("mentorMeToken", res.data.token);
-  dispatch({ type: LOGIN_SUCCESS, payload: res.data.user_id });
+  const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`);
+  console.log(res2.data);
+  dispatch({ type: LOGIN_SUCCESS, payload: res2.data });
 };
 
 export const signup = formVals => async dispatch => {
-  console.log("registering");
   const vals = { ...formVals, role: "mentor" };
   dispatch({ type: LOGIN_ATTEMPT });
   const res = await axios.post(`${url}/api/register`, vals);
-  console.log(res);
-  console.log(res.message);
   localStorage.setItem("mentorMeToken", res.data.token);
   dispatch({ type: LOGIN_SUCCESS, payload: res.data.user_id });
 };
 
 export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_ATTEMPT });
-  const res = await axios.get(`${url}/api/questions`, { headers });
+  const res = await axios.get(`${url}/api/questions`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
   console.log(res.data);
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };
@@ -51,7 +46,9 @@ export const fetchQuestions = () => async dispatch => {
 export const addQuestion = formVals => async dispatch => {
   console.log(formVals);
   dispatch({ type: ADD_QUESTION_ATTEMPT });
-  await axios.post(`${url}/api/posts`, formVals, { headers });
+  await axios.post(`${url}/api/posts`, formVals, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
   dispatch({ type: ADD_QUESTION_SUCCESS });
 };
 
@@ -60,7 +57,9 @@ export const addMessage = formVals => async dispatch => {
 };
 
 export const deleteQuestion = id => async dispatch => {
-  await axios.delete(`${url}/api/posts/${id}`, { headers });
+  await axios.delete(`${url}/api/posts/${id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
   dispatch({ type: DELETE_QUESTION_SUCCESS });
 };
 
@@ -70,7 +69,9 @@ export const logout = id => async dispatch => {
 
 export const fetchQuestion = id => async dispatch => {
   dispatch({ type: FETCH_QUESTION_ATTEMPT });
-  const res = await axios.get(`${url}/api/questions/${id}`, { headers });
+  const res = await axios.get(`${url}/api/questions/${id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
   dispatch({ type: FETCH_QUESTION_SUCCESS, payload: res.data });
 };
 

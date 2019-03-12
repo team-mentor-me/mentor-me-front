@@ -36,7 +36,7 @@ const QuestionDiv = styled.div`
   justify-content: space-between;
   div {
     h3 {
-      width: 87%;
+      width: 100%;
       margin: 0 auto;
       font-size: 2rem;
       font-weight: 550;
@@ -62,9 +62,24 @@ const QuestionDiv = styled.div`
   }
 `;
 
+const RenderStyled = styled.div`
+  display: flex;
+  width: 90%;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    margin: 0 1rem;
+    color: DarkMagenta;
+  }
+`;
+
 function SingleQuestion({ question, currentUser }) {
   function displayButtons() {
-    if (currentUser.id + "" !== question.user_id + "") {
+    if (currentUser.id + "" === question.user_id + "") {
       return (
         <>
           <Link to={`/delete/${question.post_id}`}>Delete</Link>
@@ -85,8 +100,10 @@ function SingleQuestion({ question, currentUser }) {
       <div>
         <QuestionDiv>
           <div>
-            <h3>Question</h3>
-            {displayButtons()}
+            <RenderStyled>
+              <h3>Question</h3>
+              {displayButtons()}
+            </RenderStyled>
 
             <p>{question.description}</p>
           </div>

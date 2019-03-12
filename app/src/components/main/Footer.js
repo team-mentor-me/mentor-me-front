@@ -35,7 +35,7 @@ function Footer() {
       <NavLink to="/ask" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-plus" />
       </NavLink>
-      <NavLink to="/messages" activeStyle={{ color: "#5887F9" }}>
+      <NavLink to="/conversations" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-user-friends" />
       </NavLink>
 

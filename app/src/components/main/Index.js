@@ -6,14 +6,12 @@ import Question from "./Question";
 import { fetchQuestions, logout } from "../../actions";
 
 function Index(props) {
-  console.log(props);
   if (!props.isLoggedIn) {
     return <Redirect to="/login" />;
   }
 
   useEffect(() => {
     props.fetchQuestions();
-    console.log("use effect");
   }, []);
 
   if (props.fetchingQs) {
@@ -31,7 +29,6 @@ function Index(props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isLoggedIn: state.currentUser.isLoggedIn,
     questions: state.questions.questions,
