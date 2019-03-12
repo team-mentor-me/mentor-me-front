@@ -40,9 +40,7 @@ export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_ATTEMPT });
   console.log("fetching qs");
   console.log(localStorage.getItem("mentorMeToken"));
-  const res = await axios.get(`${url}/api/questions`, {
-    headers: { Authorization: localStorage.getItem("mentorMeToken") }
-  });
+  const res = await axios.get(`${url}/api/questions`);
   console.log(res.data);
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };

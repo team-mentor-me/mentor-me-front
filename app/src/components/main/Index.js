@@ -5,17 +5,20 @@ import Top from "./Top";
 import Question from "./Question";
 import { fetchQuestions, logout } from "../../actions";
 
-
 function Index(props) {
   console.log(props);
   if (!props.isLoggedIn) {
-  return <Redirect to="/login" />;
+    return <Redirect to="/login" />;
   }
 
   useEffect(() => {
     props.fetchQuestions();
     console.log("use effect");
   }, []);
+
+  if (props.fetchingQs) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -31,7 +34,8 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     isLoggedIn: state.currentUser.isLoggedIn,
-    questions: state.questions.questions
+    questions: state.questions.questions,
+    fetchingQs: state.questions.fetchingQs
   };
 };
 
