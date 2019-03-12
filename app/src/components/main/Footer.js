@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const FooterStyled = styled.footer`
+  z-index: 100;
   position: fixed;
   bottom: 0;
   display: flex;
