@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
+import Profile from "../profile/Profile";
 
 const UserDetails = styled.div`
   position: relative;
@@ -26,12 +27,23 @@ const Img = styled.img`
   border-radius: 8px;
 `;
 
+const Edit = styled.div`
+display: flex; flex-direction: row; align-content: flex-end; 
+space-between: none;
+padding: 3px 3px;
+padding-left: 200px;
+margin: 17px 17px;
+color: red;
+font-size: 2em;
+`;
+
 const QuestionDiv = styled.div`
   margin-top: 20%;
   background: #fafafa;
   height: 67vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   /* align-items: center; */
   justify-content: space-between;
   div {
@@ -51,6 +63,7 @@ const QuestionDiv = styled.div`
       margin-top: 7%;
       font-size: 1.6rem;
       line-height: 1.45;
+      height: auto;
     }
   }
 
@@ -67,8 +80,10 @@ function SingleQuestion({ question, currentUser }) {
     if (currentUser.id + "" !== question.user_id + "") {
       return (
         <>
-          <Link to={`/delete/${question.post_id}`}>Delete</Link>
-          <Link to={`/edit/${question.post_id}`}>Edit</Link>
+          <Edit>
+            <Link style={{ textDecoration: "none" }} to={`/edit/${question.post_id}`}>EDIT</Link>
+            <Link style={{ textDecoration: "none" }} to={`/delete/${question.post_id}`}>DELETE</Link>
+          </Edit>
         </>
       );
     }
@@ -76,7 +91,8 @@ function SingleQuestion({ question, currentUser }) {
 
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to="/">
+      {console.log(Profile)}
+      <Link style={{ textDecoration: "none" }} to={`/`}> {/*profile/${Profile.question.user_id}*/}
         <UserDetails>
           <h1>{question.name}</h1>
         </UserDetails>
