@@ -6,7 +6,9 @@ import {
   ADD_QUESTION_SUCCESS,
   ADD_MESSAGE,
   FETCH_QUESTIONS_ATTEMPT,
-  FETCH_QUESTIONS_SUCCESS
+  FETCH_QUESTIONS_SUCCESS,
+  DELETE_QUESTION_SUCCESS,
+  LOGOUT
 } from "./types";
 
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
@@ -54,4 +56,13 @@ export const addQuestion = (formVals, id) => async dispatch => {
 
 export const addMessage = formVals => async dispatch => {
   dispatch({ type: ADD_MESSAGE, payload: formVals });
+};
+
+export const deleteQuestion = id => async dispatch => {
+  await axios.delete(`${url}/api/posts/${id}`);
+  dispatch({ type: DELETE_QUESTION_SUCCESS });
+};
+
+export const logout = id => async dispatch => {
+  dispatch({ type: LOGOUT });
 };

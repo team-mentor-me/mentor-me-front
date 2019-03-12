@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./auth/Login";
 import { Route, BrowserRouter } from "react-router-dom";
 import Index from "./main/Index";
@@ -12,6 +12,7 @@ import Ask from "./ask/Ask";
 import Messages from "./messages/Messages";
 import ProfileMentor from "./profile/ProfileMentor";
 import ProfileStudent from "./profile/ProfileStudent";
+import Delete from "./delete/Delete";
 
 function App(props) {
   return (
@@ -26,6 +27,9 @@ function App(props) {
         <Route path="/ask" component={Ask} />
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
+        <Route path="/delete/:id" component={SingleQuestion} />
+        <Route path="/delete/:id" component={Delete} />
+
         <Route
           path="/profile"
           render={propss => {

@@ -53,4 +53,9 @@ html, body {
     font-family: sans-serif;
     margin-bottom: 30px;
 }
+
+#modal {
+	position: absolute;
+	top: 0;
+}
 `;
