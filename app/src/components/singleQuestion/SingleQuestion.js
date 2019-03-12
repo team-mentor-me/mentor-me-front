@@ -91,7 +91,7 @@ function SingleQuestion({ question, currentUser }) {
             <p>{question.description}</p>
           </div>
 
-          <Link to={`/conversation/22`}>
+          <Link style={{ textDecoration: "none" }} to={`/conversation/22`}>
             <BtnPrimary width="87%">
               <i className="fas fa-user-plus" /> Respond
             </BtnPrimary>

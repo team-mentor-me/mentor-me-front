@@ -11,14 +11,14 @@ const Nav = styled.div`
   align-items: center;
 
   /*  to be removed later */
-  margin-bottom: 15%;
+  margin-bottom: 5%;
 `;
 
 const Search = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-
+  
   h3 {
     font-size: 2.2rem;
     font-family: "Gibson", sans-serif;
