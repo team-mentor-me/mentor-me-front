@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Question from "./Question";
 import SearchTop from "./SearchTop";
 
-
 const MainContent = styled.div`
   margin-top: 8%;
   .question {
@@ -72,7 +71,6 @@ function Search(props) {
 
   return (
     <>
-    
       <SearchTop />
       <MainContent>
         <p className="question">What would you like to help with?</p>
@@ -90,7 +88,7 @@ function Search(props) {
           </BtnPrimary>
         </form>
         {qs.map(q => (
-          <Question key={q.id} question={q} />
+          <Question key={q.post_id} question={q} />
         ))}
       </MainContent>
     </>
@@ -98,7 +96,7 @@ function Search(props) {
 }
 
 const mapStateToProps = state => ({
-  questions: state.questions
+  questions: state.questions.questions
 });
 
 export default connect(mapStateToProps)(Search);

@@ -14,19 +14,22 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
     return <Redirect to="/" />;
   }
 
+  console.log(errors);
+
   return (
     <LoginStyled register>
       <h1>Register</h1>
       <Form>
         {touched.username && errors.username && <p>{errors.username}</p>}
         <Field name="username" type="text" placeholder="Full Name" />
-        {touched.country && errors.country && <p>{errors.country}</p>}
-        <Field name="country" type="text" placeholder="Country" />
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <Field name="email" type="email" placeholder="Email" />
         {touched.password && errors.password && <p>{errors.password}</p>}
         <Field name="password" type="password" placeholder="Password" />
-        <button>
+        {touched.name && errors.name && <p>{errors.name}</p>}
+        <Field name="name" type="text" placeholder="Full Name" />
+        {touched.email && errors.email && <p>{errors.email}</p>}
+        <Field name="email" type="email" placeholder="Email" />
+
+        <button type="submit">
           <i className="far fa-edit" /> Register
         </button>
       </Form>
@@ -40,7 +43,7 @@ const enhancedForm = withFormik({
     return {
       email: "",
       username: "",
-      country: "",
+      name: "",
       password: ""
     };
   },
@@ -48,9 +51,10 @@ const enhancedForm = withFormik({
     email: yup.string().required("Email is required"),
     password: yup.string().required("Password is required"),
     username: yup.string().required("This field is required"),
-    country: yup.string().required("Country is required")
+    name: yup.string().required("Country is required")
   }),
   handleSubmit(formVals, { props }) {
+    console.log("working");
     props.signup(formVals).then(() => props.history.push("/"));
   }
 })(SignUp);

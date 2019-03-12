@@ -12,6 +12,7 @@ import Ask from "./ask/Ask";
 import Messages from "./messages/Messages";
 import Profile from "./profile/Profile";
 import Delete from "./delete/Delete";
+import EditQuestion from "./edit/EditQuestion";
 
 function App(props) {
   return (
@@ -28,6 +29,7 @@ function App(props) {
         <Route path="/profile" component={Profile} />
         <Route path="/delete/:id" component={SingleQuestion} />
         <Route path="/delete/:id" component={Delete} />
+        <Route path="/edit/:id" component={EditQuestion} />
         {props.isLoggedIn && <Footer />}
       </>
     </BrowserRouter>
