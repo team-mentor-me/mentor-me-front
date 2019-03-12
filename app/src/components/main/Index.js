@@ -4,6 +4,11 @@ import { Redirect } from "react-router-dom";
 import Top from "./Top";
 import Question from "./Question";
 import { fetchQuestions, logout } from "../../actions";
+import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
+
+//loader style
+const Load = styled.div` text-align:center; margin-top: 50%;`
 
 function Index(props) {
   console.log(props);
@@ -17,7 +22,12 @@ function Index(props) {
   }, []);
 
   if (props.fetchingQs) {
-    return <div>Loading...</div>;
+    return <Load><Loader 
+    type="TailSpin"
+    color="#5887F9"
+    height="100"	
+    width="100"
+    /></Load>;
   }
 
   return (
