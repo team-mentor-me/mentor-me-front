@@ -56,10 +56,10 @@ function Profile({ profile }) {
     <StyledProfile>
       <Head>
         <H1>{profile.fullName}</H1>
-        <P>Skill,Location</P>
+        <P>Skills, Location</P>
         <Img src={profile.photoUrl} alt="user" />
       </Head>
-      <H3>about</H3>{/*add questions too so they can switch between mentors about page and their posted questions */}
+      <H3>about</H3>
       <Title>Sharing my experience with aspiring Photographers</Title>
       <P2>blah blah</P2>
     </StyledProfile>

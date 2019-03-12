@@ -27,7 +27,7 @@ function App(props) {
         <Route path="/ask" component={Ask} />
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile/:id" component={Profile}/>
         <Route path="/delete/:id" component={SingleQuestion} />
         <Route path="/delete/:id" component={Delete} />
         {props.isLoggedIn && <Footer />}

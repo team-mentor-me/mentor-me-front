@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
+import Profile from "../profile/Profile";
 
 const UserDetails = styled.div`
   position: relative;
@@ -76,7 +77,8 @@ function SingleQuestion({ question, currentUser }) {
 
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to='/'>
+      {console.log(Profile)}
+      <Link style={{ textDecoration: "none" }} to={`/profile/${Profile.user_id}`}>
         <UserDetails>
           <h1>{question.name}</h1>
         </UserDetails>
