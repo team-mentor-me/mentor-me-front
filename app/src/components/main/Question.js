@@ -52,11 +52,11 @@ function Question({ question }) {
   return (
     
     <QuestionStyled>
-     
-      <Link to={`/question/${question.id}`}>
-        <img src={question.photo_path} alt="user" />
+
+      <Link to={`/question/${question.post_id}`}>
+        <img src={question.photo} alt="user" />
         <Content>
-          {/* <h3>{question.user.name}</h3> */}
+          <h3>{question.name}</h3>
           <h5>{question.category}</h5>
           <p>{question.post}</p>
         </Content>

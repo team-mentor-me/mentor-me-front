@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Login from "./auth/Login";
 import { Route, BrowserRouter } from "react-router-dom";
 import Index from "./main/Index";
@@ -11,6 +11,7 @@ import Footer from "./main/Footer";
 import Ask from "./ask/Ask";
 import Messages from "./messages/Messages";
 import Profile from "./profile/Profile";
+import Delete from "./delete/Delete";
 
 
 function App(props) {
@@ -27,17 +28,8 @@ function App(props) {
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
         <Route path="/profile" component={Profile}/>
-       {/*  
-      <Route
-          path="/profile"
-          render={propss => {
-            return props.user.status === "mentor" ? (
-              <ProfileMentor {...propss} />
-            ) : (
-              <ProfileStudent {...propss} />
-            );
-          }}
-        />*/}
+        <Route path="/delete/:id" component={SingleQuestion} />
+        <Route path="/delete/:id" component={Delete} />
         {props.isLoggedIn && <Footer />}
       </>
     </BrowserRouter>

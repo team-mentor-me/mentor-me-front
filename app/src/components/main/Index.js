@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Top from "./Top";
 import Question from "./Question";
-import { fetchQuestions } from "../../actions";
+import { fetchQuestions, logout } from "../../actions";
 
 
 function Index(props) {
@@ -14,14 +14,14 @@ function Index(props) {
 
   useEffect(() => {
     props.fetchQuestions();
+    console.log("use effect");
   }, []);
 
   return (
     <div>
-    
-      <Top />
+      <Top logout={props.logout} />
       {props.questions.map(question => (
-        <Question question={question} key={question.id} />
+        <Question question={question} key={question.post_id} />
       ))}
     </div>
   );
@@ -37,5 +37,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchQuestions }
+  { fetchQuestions, logout }
 )(Index);

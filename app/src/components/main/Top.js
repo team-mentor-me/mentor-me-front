@@ -30,6 +30,7 @@ const Search = styled.div`
     font-size: 2rem;
     color: #4c5264;
     opacity: 0.6;
+    cursor: pointer;
   }
 `;
 
@@ -37,7 +38,13 @@ function Top(props) {
   return (
     <Nav>
       <Search>
-        <i className="fas fa-sliders-h" />
+        <i
+          onClick={() => {
+            localStorage.removeItem("mentorMeToken");
+            props.logout();
+          }}
+          className="fas fa-sliders-h"
+        />
         <h3>Question Feed</h3>
         <Link to="/search">
           <i className="fas fa-search" />
