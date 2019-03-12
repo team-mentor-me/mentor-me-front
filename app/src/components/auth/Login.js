@@ -117,7 +117,11 @@ const enhancedForm = withFormik({
     password: yup.string().required("Password might be incorrect")
   }),
   handleSubmit(formVals, { props }) {
-    props.login(formVals).then(() => props.history.push("/"));
+    console.log(props.history);
+    props.login(formVals).then(() => {
+      console.log("pushing");
+      props.history.push("/");
+    });
   }
 })(Login);
 

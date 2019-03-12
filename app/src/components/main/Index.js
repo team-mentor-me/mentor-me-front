@@ -11,14 +11,12 @@ import styled from 'styled-components';
 const Load = styled.div` text-align:center; margin-top: 50%;`
 
 function Index(props) {
-  console.log(props);
   if (!props.isLoggedIn) {
     return <Redirect to="/login" />;
   }
 
   useEffect(() => {
     props.fetchQuestions();
-    console.log("use effect");
   }, []);
 
   if (props.fetchingQs) {
@@ -41,7 +39,6 @@ function Index(props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     isLoggedIn: state.currentUser.isLoggedIn,
     questions: state.questions.questions,

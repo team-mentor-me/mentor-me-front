@@ -6,10 +6,10 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  photoUrl:
-    "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/117671116/original/9d8e9cbd1b9419204923f4706eefd6817fcc4a78/design-minimalist-flat-line-vector-avatar.jpg",
-  fullName: "Joe Beans",
-  id: "6",
+  photoUrl: "",
+  fullName: "",
+  id: null,
+  about: "",
   messages: [
     {
       withWho: {
@@ -56,8 +56,8 @@ const initialState = {
       ]
     }
   ],
-  status: "mentor",
-  isLoggedIn: true,
+  role: "",
+  isLoggedIn: false,
   loadingAuth: null
 };
 
@@ -68,7 +68,19 @@ export default (state = initialState, action) => {
     case LOGIN_ATTEMPT:
       return { ...state, loadingAuth: true };
     case LOGIN_SUCCESS:
-      return { ...state, loadingAuth: false, isLoggedIn: true };
+      const newUser = {
+        ...state,
+        id: action.payload.user_id,
+        fullName: action.payload.name,
+        role: action.payload.role,
+        photoUrl:
+          action.payload.photo ||
+          "https://cdn3.iconfinder.com/data/icons/business-round-flat-vol-1-1/36/user_account_profile_avatar_person_student_male-512.png",
+        about: action.payload.about,
+        isLoggedIn: true,
+        loadingAuth: false
+      };
+      return newUser;
     case ADD_MESSAGE:
       const newMessages = state.messages.map(msg => {
         if (msg.withWho.name === action.payload.withWho) {
