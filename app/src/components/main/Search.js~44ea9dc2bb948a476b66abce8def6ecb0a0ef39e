@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Question from "./Question";
 import SearchTop from "./SearchTop";
 
-
 const MainContent = styled.div`
   margin-top: 8%;
   .question {
@@ -72,7 +71,6 @@ function Search(props) {
 
   return (
     <>
-    
       <SearchTop />
       <MainContent>
         <p className="question">What would you like to help with?</p>

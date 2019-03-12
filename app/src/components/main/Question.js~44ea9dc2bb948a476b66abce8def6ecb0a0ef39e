@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
 const QuestionStyled = styled.div`
   a {
     font-family: sans-serif;
@@ -50,15 +49,13 @@ const Content = styled.div`
 
 function Question({ question }) {
   return (
-    
     <QuestionStyled>
-
-      <Link to={`/question/${question.post_id}`}>
-        <img src={question.photo} alt="user" />
+      <Link to={`/question/${question.id}`}>
+        <img src={question.user.photoUrl} alt="user" />
         <Content>
-          <h3>{question.name}</h3>
+          <h3>{question.user.name}</h3>
           <h5>{question.category}</h5>
-          <p>{question.post}</p>
+          <p>{question.question}</p>
         </Content>
       </Link>
     </QuestionStyled>

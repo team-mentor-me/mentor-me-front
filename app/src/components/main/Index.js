@@ -5,10 +5,11 @@ import Top from "./Top";
 import Question from "./Question";
 import { fetchQuestions, logout } from "../../actions";
 
+
 function Index(props) {
   console.log(props);
   if (!props.isLoggedIn) {
-    return <Redirect to="/login" />;
+  return <Redirect to="/login" />;
   }
 
   useEffect(() => {
