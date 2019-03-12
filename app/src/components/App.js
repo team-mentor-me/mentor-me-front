@@ -13,6 +13,7 @@ import Messages from "./messages/Messages";
 import Profile from "./profile/Profile";
 import Delete from "./delete/Delete";
 import EditQuestion from "./edit/EditQuestion";
+import ConversationList from "./conversations/ConversationList";
 
 function App(props) {
   return (
@@ -24,6 +25,7 @@ function App(props) {
         <Route path="/" exact component={Index} />
         <Route path="/search" component={Search} />
         <Route path="/ask" component={Ask} />
+        <Route path="/conversations" component={ConversationList} />
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
         <Route path="/profile" component={Profile} />
