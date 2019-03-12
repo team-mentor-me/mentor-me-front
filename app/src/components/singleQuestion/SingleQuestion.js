@@ -64,7 +64,7 @@ const QuestionDiv = styled.div`
 
 function SingleQuestion({ question, currentUser }) {
   function displayButtons() {
-    if (currentUser.id + "" === question.user_id + "") {
+    if (currentUser.id + "" !== question.user_id + "") {
       return (
         <>
           <Link to={`/delete/${question.post_id}`}>Delete</Link>
@@ -76,7 +76,7 @@ function SingleQuestion({ question, currentUser }) {
 
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to='/'>
+      <Link style={{ textDecoration: "none" }} to="/">
         <UserDetails>
           <h1>{question.name}</h1>
         </UserDetails>

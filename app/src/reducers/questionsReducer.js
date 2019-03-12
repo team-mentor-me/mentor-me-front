@@ -48,7 +48,7 @@ const initialStore = {
     // }
   ],
 
-  fetchingQs: true,
+  fetchingQs: false,
   addingQ: false
 };
 

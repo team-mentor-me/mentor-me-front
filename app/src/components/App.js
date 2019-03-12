@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Login from "./auth/Login";
 import { Route, BrowserRouter } from "react-router-dom";
 import Index from "./main/Index";
@@ -13,13 +13,11 @@ import Messages from "./messages/Messages";
 import Profile from "./profile/Profile";
 import Delete from "./delete/Delete";
 
-
 function App(props) {
   return (
     <BrowserRouter>
       <>
         <GlobalStyle />
-
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/" exact component={Index} />
@@ -27,7 +25,7 @@ function App(props) {
         <Route path="/ask" component={Ask} />
         <Route path="/conversation/:id" component={Messages} />
         <Route path="/question/:id" component={SingleQuestion} />
-        <Route path="/profile" component={Profile}/>
+        <Route path="/profile" component={Profile} />
         <Route path="/delete/:id" component={SingleQuestion} />
         <Route path="/delete/:id" component={Delete} />
         {props.isLoggedIn && <Footer />}
