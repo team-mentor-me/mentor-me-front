@@ -8,18 +8,19 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 export const LoginStyled = styled.div`
-  height: 100vh;
+  height: auto;
   width: 100vw;
-  background-image: linear-gradient(to bottom, #60c3ff, #5574f7);
+  background: linear-gradient(to bottom, rgba(0,96,195,1) 0%,rgba(85,116,247,1) 100%);
   font-family: canada-type-gibson, sans-serif;
-
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
+  overflow: hidden;
   h1 {
-    margin-top: 30%;
+    margin-top: 24%;
+    margin-bottom: 18%;
     font-size: 4rem;
     font-weight: 550;
     color: #fff;
