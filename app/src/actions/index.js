@@ -45,6 +45,15 @@ export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };
 
+export const fetchProfile = () => async dispatch => {
+  dispatch({ type: FETCH_PROFILE_ATTEMPT });
+  console.log("fetching ps");
+  console.log(localStorage.getItem("mentorMeToken"));
+  const res = await axios.get(`${url}/api/?????`);
+  console.log(res.data);
+  dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
+};
+
 export const addQuestion = (formVals, id) => async dispatch => {
   dispatch({ type: ADD_QUESTION_ATTEMPT });
   const vals = { ...formVals, type: "question", user_id: id };
