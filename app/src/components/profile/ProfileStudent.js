@@ -55,9 +55,9 @@ function ProfileStudent({ profile }) {
 return (
     <StyledProfile>
     <Head>
-    <H1>{profile.fullName}</H1>
-    <P>Skills, Location</P>
-    <Img src={profile.photoUrl} alt="user" />
+    <H1>{profile.user.name}</H1>
+    <P>{profile.user.role}</P>
+    <Img src={profile.user.photo} alt="user" />
     </Head>
     <H3>about</H3>
     <Title>Sharing my experience with aspiring Photographers</Title>

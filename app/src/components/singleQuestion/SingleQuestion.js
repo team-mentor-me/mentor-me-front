@@ -93,7 +93,8 @@ function SingleQuestion({ question, currentUser }) {
   return (
     <div>
       {console.log(Profile)}
-      <Link style={{ textDecoration: "none" }} to={`/profile/${ProfileStudent.user_id}`}> {/*profile/${Profile.question.user_id}*/}
+      {console.log("Question Id of Angello:", question.user_id)}
+      <Link style={{ textDecoration: "none" }} to={`/profile/${question.user_id}`}>
         <UserDetails>
           <h1>{question.name}</h1>
         </UserDetails>

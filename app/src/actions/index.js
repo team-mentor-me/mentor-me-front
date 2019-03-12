@@ -8,7 +8,9 @@ import {
   FETCH_QUESTIONS_ATTEMPT,
   FETCH_QUESTIONS_SUCCESS,
   DELETE_QUESTION_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  FETCH_PROFILE_SUCCESS,
+  FETCH_PROFILE_ATTEMPT,
 } from "./types";
 
 axios.defaults.headers.common["Authorization"] = localStorage.getItem(
@@ -45,14 +47,14 @@ export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };
 
-export const fetchProfile = () => async dispatch => {
+{/*export const fetchProfile = () => async dispatch => {
   dispatch({ type: FETCH_PROFILE_ATTEMPT });
   console.log("fetching ps");
   console.log(localStorage.getItem("mentorMeToken"));
-  const res = await axios.get(`${url}/api/?????`);
+  const res = await axios.get(`${url}/api/user${id}`);
   console.log(res.data);
   dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
-};
+};*/}
 
 export const addQuestion = (formVals, id) => async dispatch => {
   dispatch({ type: ADD_QUESTION_ATTEMPT });
