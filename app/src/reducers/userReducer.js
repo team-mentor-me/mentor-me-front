@@ -1,4 +1,4 @@
-import { ADD_MESSAGE } from "../actions/types";
+import { ADD_MESSAGE, LOGIN_ATTEMPT, LOGIN_SUCCESS } from "../actions/types";
 
 const initialState = {
   photoUrl:
@@ -51,11 +51,17 @@ const initialState = {
       ]
     }
   ],
-  status: "mentor"
+  status: "mentor",
+  isLoggedIn: false,
+  loadingAuth: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_ATTEMPT:
+      return { ...state, loadingAuth: true };
+    case LOGIN_SUCCESS:
+      return { ...state, loadingAuth: false, isLoggedIn: true };
     case ADD_MESSAGE:
       const newMessages = state.messages.map(msg => {
         if (msg.withWho.name === action.payload.withWho) {

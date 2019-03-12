@@ -51,7 +51,7 @@ padding: 20px;
 height: auto;`
 
 
-function ProfileMentor({ profile }) {
+function Profile({ profile }) {
   return (
     <StyledProfile>
       <Head>
@@ -73,4 +73,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ProfileMentor);
+export default connect(mapStateToProps)(Profile);

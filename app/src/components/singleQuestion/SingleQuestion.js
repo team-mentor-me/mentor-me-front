@@ -65,17 +65,17 @@ const QuestionDiv = styled.div`
 function SingleQuestion({ question }) {
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to="/profile/ProfileStudent">
+      <Link style={{ textDecoration: "none" }} to='/'>
         <UserDetails>
-          <h1>{question.user.name}</h1>
+          <h1>Placeholder</h1>
         </UserDetails>
-        <Img src={question.user.photoUrl} alt="user" />
+        <Img src={question.photo_path} alt="user" />
       </Link>
       <div>
         <QuestionDiv>
           <div>
             <h3>Question</h3>
-            <p>{question.description}</p>
+            <p>{question.post}</p>
           </div>
 
           <Link to={`/conversation/22`}>
@@ -89,8 +89,15 @@ function SingleQuestion({ question }) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  question: state.questions.find(q => q.id === ownProps.match.params.id)
-});
+const mapStateToProps = (state, ownProps) => {
+  console.log(
+    state.questions.questions.find(q => q.id + "" === ownProps.match.params.id)
+  );
+  return {
+    question: state.questions.questions.find(
+      q => q.id + "" === ownProps.match.params.id
+    )
+  };
+};
 
 export default connect(mapStateToProps)(SingleQuestion);

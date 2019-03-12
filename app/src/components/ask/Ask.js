@@ -155,11 +155,15 @@ const enhancedForm = withFormik({
           "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/111554483/original/83d513acbc4b3716c9a474086bb633a5de3c2d74/create-social-media-avatars-in-minimalist-style.jpg"
       }
     };
-    props.addQuestion(vals).then(() => props.history.push("/"));
+    props.addQuestion(vals, props.user_id).then(() => props.history.push("/"));
   }
 })(Ask);
 
+const mapStateToProps = state => ({
+  user_id: state.currentUser.id
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { addQuestion }
 )(enhancedForm);

@@ -16,7 +16,7 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
 
   return (
     <LoginStyled register>
-      <h1>Sign Up</h1>
+      <h1>Register</h1>
       <Form>
         {touched.username && errors.username && <p>{errors.username}</p>}
         <Field name="username" type="text" placeholder="Full Name" />
@@ -27,7 +27,7 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
         {touched.password && errors.password && <p>{errors.password}</p>}
         <Field name="password" type="password" placeholder="Password" />
         <button>
-          <i className="far fa-edit" /> Sign Up
+          <i className="far fa-edit" /> Register
         </button>
       </Form>
       <Link to="/login">Login</Link>
