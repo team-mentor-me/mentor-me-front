@@ -13,7 +13,7 @@ const FooterStyled = styled.footer`
   color: #bcc5d3;
   background: #fff;
   width: 100%;
-
+  z-index: 9001;
   font-size: 2rem;
 
   a {

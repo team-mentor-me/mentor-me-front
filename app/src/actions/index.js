@@ -9,8 +9,12 @@ import {
   FETCH_QUESTIONS_SUCCESS,
   DELETE_QUESTION_SUCCESS,
   LOGOUT,
-  FETCH_QUESTION_ATTEMPT,
+
+  FETCH_PROFILE_SUCCESS,
+  FETCH_PROFILE_ATTEMPT,
+  FETCH_QUETION_ATTEMPT,
   FETCH_QUESTION_SUCCESS
+
 } from "./types";
 
 // axios.defaults.headers.common["Content-Type"] = "application/json";
@@ -50,8 +54,21 @@ export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };
 
+
+{/*export const fetchProfile = () => async dispatch => {
+  dispatch({ type: FETCH_PROFILE_ATTEMPT });
+  console.log("fetching ps");
+  console.log(localStorage.getItem("mentorMeToken"));
+  const res = await axios.get(`${url}/api/user${id}`);
+  console.log(res.data);
+  dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
+};*/}
+
+export const addQuestion = (formVals, id) => async dispatch => {
+
 export const addQuestion = formVals => async dispatch => {
   console.log(formVals);
+
   dispatch({ type: ADD_QUESTION_ATTEMPT });
   await axios.post(`${url}/api/posts`, formVals, { headers });
   dispatch({ type: ADD_QUESTION_SUCCESS });
