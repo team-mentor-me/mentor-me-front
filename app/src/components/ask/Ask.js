@@ -6,7 +6,7 @@ import { Form, Field, withFormik } from "formik";
 import * as yup from "yup";
 import { BtnPrimary } from "../main/Search";
 
-const Intro = styled.h1`
+export const Intro = styled.h1`
   width: 100%;
   padding: 5% 0;
   text-align: center;
@@ -65,6 +65,7 @@ const MainContent = styled.div`
       padding: 10px 15px;
       outline: none;
       color: #fff;
+      margin-bottom: 10%;
 
       i {
         text-align: right;
@@ -79,7 +80,7 @@ const MainContent = styled.div`
       margin-bottom: 5%;
       border-radius: 10px;
       border-color: #5574f7;
-      margin-top: 10%;
+      /* margin-top: 10%; */
 
       &::placeholder {
         opacity: 0.6;
