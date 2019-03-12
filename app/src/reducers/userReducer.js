@@ -1,4 +1,9 @@
-import { ADD_MESSAGE, LOGIN_ATTEMPT, LOGIN_SUCCESS } from "../actions/types";
+import {
+  ADD_MESSAGE,
+  LOGIN_ATTEMPT,
+  LOGIN_SUCCESS,
+  LOGOUT
+} from "../actions/types";
 
 const initialState = {
   photoUrl:
@@ -58,6 +63,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case LOGOUT:
+      return { ...state, isLoggedIn: false };
     case LOGIN_ATTEMPT:
       return { ...state, loadingAuth: true };
     case LOGIN_SUCCESS:

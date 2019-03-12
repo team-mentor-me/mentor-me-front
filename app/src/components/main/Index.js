@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Top from "./Top";
 import Question from "./Question";
-import { fetchQuestions } from "../../actions";
+import { fetchQuestions, logout } from "../../actions";
 
 function Index(props) {
   console.log(props);
@@ -18,7 +18,7 @@ function Index(props) {
 
   return (
     <div>
-      <Top />
+      <Top logout={props.logout} />
       {props.questions.map(question => (
         <Question question={question} key={question.post_id} />
       ))}
@@ -36,5 +36,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchQuestions }
+  { fetchQuestions, logout }
 )(Index);

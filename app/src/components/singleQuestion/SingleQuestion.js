@@ -63,9 +63,8 @@ const QuestionDiv = styled.div`
 `;
 
 function SingleQuestion({ question, currentUser }) {
-  console.log(question);
   function displayButtons() {
-    if (currentUser.id !== question.user_id) {
+    if (currentUser.id + "" === question.user_id + "") {
       return (
         <>
           <Link to={`/delete/${question.post_id}`}>Delete</Link>
