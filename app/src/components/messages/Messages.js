@@ -5,18 +5,50 @@ import MessagesList from "./MessagesList";
 import styled from "styled-components";
 import { addMessage } from "../../actions";
 
+// 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
+
 const MessagesStyled = styled.div`
   height: 90vh;
 `;
 
-const InputStyled = styled.input`
+const FormStyled = styled.form`
   bottom: 0;
   background: black;
   color: white;
 `;
 
+const conversation = [
+  {
+    post_id: 1,
+    post: "What's the relationship between aperture and ISO?",
+    description: "extended question goes here",
+    category: "Photography",
+    type: "question",
+    conversation_fk: 1,
+    user_id: 31,
+    name: "Vlad Turcan"
+  },
+  {
+    post_id: 4,
+    post: "message from mentor",
+    description: "extended question goes here",
+    category: "Photography",
+    type: "message",
+    conversation_fk: 1,
+    user_id: 4,
+    name: "Lucy Lee"
+  }
+];
+
 function Messages(props) {
-  console.log(props.message);
+  let nameToUse;
+  for (let i = 0; i < conversation.length; i++) {
+    if (conversation[i].name !== props.currentUser.fullName) {
+      nameToUse = conversation[i].name;
+      break;
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     props.addMessage({
@@ -25,22 +57,22 @@ function Messages(props) {
     });
   }
 
+  console.log(props.currentUser.id);
+
   return (
     <MessagesStyled>
-      <TopMsg history={props.history} withWho={props.message.withWho} />
-      <MessagesList messages={props.message.listOfMessages} />
-      <form onSubmit={handleSubmit}>
-        <InputStyled type="text" />
+      <TopMsg history={props.history} withWho={nameToUse} />
+      <MessagesList currentId={props.currentUser.id} messages={conversation} />
+      <FormStyled onSubmit={handleSubmit}>
+        <input type="text" />
         <button>Submit</button>
-      </form>
+      </FormStyled>
     </MessagesStyled>
   );
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  message: state.currentUser.messages.find(
-    msg => msg.id === ownProps.match.params.id
-  )
+const mapStateToProps = state => ({
+  currentUser: state.currentUser
 });
 
 export default connect(

@@ -109,6 +109,8 @@ export const updateQuestion = (id, formVals) => async dispatch => {
   });
 };
 
+export const fetchConversations = id => async => {};
+
 // {
 //   ...currentUser,
 //   id: '9',

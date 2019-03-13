@@ -12,7 +12,7 @@ function MessagesList(props) {
   return (
     <MessagesListStyled>
       {props.messages.map(msg => (
-        <Message key={msg.id} message={msg} />
+        <Message currentId={props.currentId} key={msg.post_id} message={msg} />
       ))}
     </MessagesListStyled>
   );

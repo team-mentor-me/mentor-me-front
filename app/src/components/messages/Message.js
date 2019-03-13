@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
 
 const MessageStyled = styled.div`
   padding: 10px;
@@ -15,19 +14,13 @@ const MessageStyled = styled.div`
 `;
 
 function Message(props) {
-  console.log(props);
-  console.log(props.message.user.id);
+  console.log(props.message);
   console.log(props.userId);
-
   return (
-    <MessageStyled mine={props.userId === props.message.user.id}>
-      {props.message.text}
+    <MessageStyled mine={props.currentId === props.message.user_id}>
+      {props.message.post}
     </MessageStyled>
   );
 }
 
-const mapStateToProps = state => ({
-  userId: state.currentUser.id
-});
-
-export default connect(mapStateToProps)(Message);
+export default Message;

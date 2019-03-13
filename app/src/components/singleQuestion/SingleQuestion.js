@@ -31,7 +31,6 @@ const Edit = styled.div`
   display: flex;
   flex-direction: row;
   align-content: flex-end;
-  space-between: none;
   padding: 3px 3px;
   padding-left: 200px;
   margin: 17px 17px;
