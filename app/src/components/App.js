@@ -1,6 +1,6 @@
 import React from "react";
 import Login from "./auth/Login";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter, Redirect } from "react-router-dom";
 import Index from "./main/Index";
 import SignUp from "./auth/SignUp";
 import { GlobalStyle } from "../utils/globals";
@@ -16,6 +16,13 @@ import EditQuestion from "./edit/EditQuestion";
 import ConversationList from "./conversations/ConversationList";
 
 function App(props) {
+  function conditionalRendering(Component, additionalProps) {
+    if (props.isLoggedIn) {
+      return <Component {...additionalProps} />;
+    }
+    return <Redirect to="/login" />;
+  }
+
   return (
     <BrowserRouter>
       <>
@@ -23,15 +30,60 @@ function App(props) {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/" exact component={Index} />
-        <Route path="/search" component={Search} />
-        <Route path="/ask" component={Ask} />
-        <Route path="/conversations" component={ConversationList} />
-        <Route path="/conversation/:id" component={Messages} />
-        <Route path="/question/:id" component={SingleQuestion} />
-        <Route path="/profile" component={Profile} />
-        <Route path="/delete/:id" component={SingleQuestion} />
-        <Route path="/delete/:id" component={Delete} />
-        <Route path="/edit/:id" component={EditQuestion} />
+        <Route
+          path="/search"
+          render={props => {
+            return conditionalRendering(Search, props);
+          }}
+        />
+        <Route
+          path="/ask"
+          render={props => {
+            return conditionalRendering(Ask, props);
+          }}
+        />
+        <Route
+          path="/conversations"
+          render={props => {
+            return conditionalRendering(ConversationList, props);
+          }}
+        />
+        <Route
+          path="/conversation/:id"
+          render={props => {
+            return conditionalRendering(Messages, props);
+          }}
+        />
+        <Route
+          path="/question/:id"
+          render={props => {
+            return conditionalRendering(SingleQuestion, props);
+          }}
+        />
+        <Route
+          path="/profile/:id"
+          render={props => {
+            return conditionalRendering(Profile, props);
+          }}
+        />
+        <Route
+          path="/delete/:id"
+          render={props => {
+            return conditionalRendering(SingleQuestion, props);
+          }}
+        />
+        <Route
+          path="/delete/:id"
+          render={props => {
+            return conditionalRendering(Delete, props);
+          }}
+        />
+        <Route
+          path="/edit/:id"
+          render={props => {
+            return conditionalRendering(EditQuestion, props);
+          }}
+        />
         {props.isLoggedIn && <Footer />}
       </>
     </BrowserRouter>

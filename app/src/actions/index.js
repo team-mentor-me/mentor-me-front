@@ -9,12 +9,10 @@ import {
   FETCH_QUESTIONS_SUCCESS,
   DELETE_QUESTION_SUCCESS,
   LOGOUT,
-
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_ATTEMPT,
-  FETCH_QUETION_ATTEMPT,
+  FETCH_QUESTION_ATTEMPT,
   FETCH_QUESTION_SUCCESS
-
 } from "./types";
 
 // axios.defaults.headers.common["Content-Type"] = "application/json";
@@ -35,7 +33,9 @@ export const signup = formVals => async dispatch => {
   dispatch({ type: LOGIN_ATTEMPT });
   const res = await axios.post(`${url}/api/register`, vals);
   localStorage.setItem("mentorMeToken", res.data.token);
-  dispatch({ type: LOGIN_SUCCESS, payload: res.data.user_id });
+  const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`);
+  console.log(res2.data);
+  dispatch({ type: LOGIN_SUCCESS, payload: res2.data });
 };
 
 export const fetchQuestions = () => async dispatch => {
@@ -47,17 +47,18 @@ export const fetchQuestions = () => async dispatch => {
   dispatch({ type: FETCH_QUESTIONS_SUCCESS, payload: res.data });
 };
 
-
-{/*export const fetchProfile = () => async dispatch => {
+{
+  /*export const fetchProfile = () => async dispatch => {
   dispatch({ type: FETCH_PROFILE_ATTEMPT });
   console.log("fetching ps");
   console.log(localStorage.getItem("mentorMeToken"));
   const res = await axios.get(`${url}/api/user${id}`);
   console.log(res.data);
   dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
-};*/}
+};*/
+}
 
-export const addQuestion = (formVals, id) => async dispatch => {
+// export const addQuestion = (formVals, id) => async dispatch => {
 
 export const addQuestion = formVals => async dispatch => {
   console.log(formVals);
