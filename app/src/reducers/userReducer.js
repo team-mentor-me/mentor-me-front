@@ -4,7 +4,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
   FETCH_PROFILE_SUCCESS,
-  FETCH_PROFILE_ATTEMPT
+  FETCH_PROFILE_ATTEMPT,
 } from "../actions/types";
 
 const initialState = {
@@ -84,8 +84,11 @@ export default (state = initialState, action) => {
         loadingAuth: false
       };
       return newUser;
+    case FETCH_PROFILE_ATTEMPT: 
+      return { ...state, profileToShow: false}
     case FETCH_PROFILE_SUCCESS:
       return { ...state, profileToShow: action.payload };
+    
     case ADD_MESSAGE:
       const newMessages = state.messages.map(msg => {
         if (msg.withWho.name === action.payload.withWho) {

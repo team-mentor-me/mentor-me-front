@@ -29,8 +29,8 @@ const Img = styled.img`
   margin-bottom: -7%;
   margin-left: -50%;
   border: solid white 7px;
-  max-width: 30%;
-  border-radius: 25%;
+  max-width: 35%;
+  border-radius: 100px;
 `;
 const H1 = styled.h1`
   font-size: 4rem;
@@ -41,7 +41,7 @@ const P = styled.p`
 `;
 const Title = styled.div`
   text-align: center;
-  margin-top: 14%;
+  margin-top: 20%;
   font-weight: bold;
 `;
 const H3 = styled.h3`
@@ -78,9 +78,13 @@ function Profile({ profile, match, fetchProfile }) {
         <P>Skills, Location</P>
         <Img src={profile.photo} alt="user" />
       </Head>
-      <H3>about</H3>
-      <Title>Sharing my experience with aspiring Photographers</Title>
-      <P2>blah blah</P2>
+      <div>
+        <H3>about</H3>
+      </div>
+      <div>
+        <Title>Sharing my experience with aspiring Photographers</Title>
+        <P2>blah blah</P2>
+      </div>
     </StyledProfile>
   );
 }
