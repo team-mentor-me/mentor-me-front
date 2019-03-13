@@ -1,63 +1,74 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-
+import { fetchProfile } from "../../actions";
 
 //styles
 const StyledProfile = styled.div`
-display: flex;
-flex-direction: column;
-font-size: 2rem;
-background-color: white;
-height: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  background-color: white;
+  height: auto;
 `;
 const Head = styled.div`
-width: 100%;
-background-image: ;
-margin: 0 auto;
-text-align: center;
-background: linear-gradient(45deg, rgba(85,116,247,1) 0%,rgba(96,195,255,1) 100%);
+  width: 100%;
+  background-image: ;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(
+    45deg,
+    rgba(85, 116, 247, 1) 0%,
+    rgba(96, 195, 255, 1) 100%
+  );
 `;
 const Img = styled.img`
-margin-bottom: -7%;
-margin-left: -50%;
-border: solid white 7px;
-max-width: 30%;
-max-length: 30%;
-border-radius:7px;
+  margin-bottom: -7%;
+  margin-left: -50%;
+  border: solid white 7px;
+  max-width: 30%;
+  border-radius: 25%;
 `;
 const H1 = styled.h1`
-font-size: 4rem;
-margin-top: 17%;
+  font-size: 4rem;
+  margin-top: 17%;
 `;
 const P = styled.p`
-padding-bottom: 10%;
+  padding-bottom: 10%;
 `;
 const Title = styled.div`
-text-align:center;
-margin-top: 14%;
-font-weight: bold
+  text-align: center;
+  margin-top: 14%;
+  font-weight: bold;
 `;
 const H3 = styled.h3`
-margin-top: 12%;
-margin-bottom: -10%;
-padding-left: 15%;
-padding-bottom: 10px;
-border-bottom: solid black 2px;
-;`
+  margin-top: 12%;
+  margin-bottom: -10%;
+  padding-left: 15%;
+  padding-bottom: 10px;
+  border-bottom: solid black 2px;
+`;
 const P2 = styled.p`
-text-align:center;
-padding: 20px;
-height: auto;`
+  text-align: center;
+  padding: 20px;
+  height: auto;
+`;
 
+function Profile({ profile, match, fetchProfile }) {
+  useEffect(() => {
+    fetchProfile(match.params.id);
+  }, []);
 
-function Profile({ profile }) {
+  if (!profile) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <StyledProfile>
       <Head>
-        <H1>{profile.fullName}</H1>
+        <H1>{profile.name}</H1>
         <P>Skills, Location</P>
-        <Img src={profile.photoUrl} alt="user" />
+        <Img src={profile.photo} alt="user" />
       </Head>
       <H3>about</H3>
       <Title>Sharing my experience with aspiring Photographers</Title>
@@ -69,8 +80,11 @@ function Profile({ profile }) {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    profile: state.currentUser
+    profile: state.currentUser.profileToShow
   };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(
+  mapStateToProps,
+  { fetchProfile }
+)(Profile);

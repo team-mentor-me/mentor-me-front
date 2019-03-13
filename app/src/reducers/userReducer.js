@@ -2,7 +2,9 @@ import {
   ADD_MESSAGE,
   LOGIN_ATTEMPT,
   LOGIN_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  FETCH_PROFILE_SUCCESS,
+  FETCH_PROFILE_ATTEMPT
 } from "../actions/types";
 
 const initialState = {
@@ -57,8 +59,9 @@ const initialState = {
     }
   ],
   role: "",
-  isLoggedIn: false,
-  loadingAuth: null
+  isLoggedIn: true,
+  loadingAuth: null,
+  profileToShow: null
 };
 
 export default (state = initialState, action) => {
@@ -81,6 +84,8 @@ export default (state = initialState, action) => {
         loadingAuth: false
       };
       return newUser;
+    case FETCH_PROFILE_SUCCESS:
+      return { ...state, profileToShow: action.payload };
     case ADD_MESSAGE:
       const newMessages = state.messages.map(msg => {
         if (msg.withWho.name === action.payload.withWho) {
