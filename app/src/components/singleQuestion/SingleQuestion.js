@@ -32,7 +32,6 @@ const Edit = styled.div`
 display: flex; flex-direction: row; align-content: flex-end; 
 space-between: none;
 padding: 3px 3px;
-padding-left: 200px;
 margin: 17px 17px;
 color: red;
 font-size: 2em;
@@ -112,18 +111,21 @@ function SingleQuestion({ question, currentUser }) {
       <Link style={{ textDecoration: "none" }} to={`/profile/${question.user_id}`}>
         <UserDetails>
           <h1>{question.name}</h1>
+          <h3>{question.role}</h3>
         </UserDetails>
         <Img src={question.photo} alt="user" />
       </Link>
       <div>
         <QuestionDiv>
+
           <div>
             <RenderStyled>
               <h3>Question</h3>
               {displayButtons()}
             </RenderStyled>
-
+          
             <p>{question.description}</p>
+         
           </div>
 
           <Link style={{ textDecoration: "none" }} to={`/conversation/22`}>
