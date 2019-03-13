@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { fetchProfile } from "../../actions";
+import Loader from 'react-loader-spinner';
 
 //styles
 const StyledProfile = styled.div`
@@ -11,6 +12,8 @@ const StyledProfile = styled.div`
   background-color: white;
   height: auto;
 `;
+//loader style
+const Load = styled.div` text-align:center; margin-top: 50%;`;
 const Head = styled.div`
   width: 100%;
   background-image: ;
@@ -60,7 +63,12 @@ function Profile({ profile, match, fetchProfile }) {
   }, []);
 
   if (!profile) {
-    return <h1>Loading...</h1>;
+    return<Load><Loader 
+    type="TailSpin"
+    color="#5887F9"
+    height="100"	
+    width="100"
+    /></Load>;
   }
 
   return (

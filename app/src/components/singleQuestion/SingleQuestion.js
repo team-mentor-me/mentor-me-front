@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
 import Profile from "../profile/Profile";
-import ProfileStudent from "../profile/ProfileStudent";
+
 
 const UserDetails = styled.div`
   position: relative;
