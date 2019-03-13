@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import TopMsg from "./TopMsg";
 import MessagesList from "./MessagesList";
 import styled from "styled-components";
-import { addMessage } from "../../actions";
+import { fetchConversation } from "../../actions";
 
 // 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
 
@@ -41,28 +41,33 @@ const conversation = [
 ];
 
 function Messages(props) {
+  useEffect(() => {
+    props.fetchConversation(props.match.params.id);
+  }, []);
+
+  if (!props.conversation) {
+    return <div>Loading</div>;
+  }
+
   let nameToUse;
-  for (let i = 0; i < conversation.length; i++) {
-    if (conversation[i].name !== props.currentUser.fullName) {
-      nameToUse = conversation[i].name;
+  for (let i = 0; i < props.conversation.length; i++) {
+    if (props.conversation[i].name !== props.currentUser.fullName) {
+      nameToUse = props.conversation[i].name;
       break;
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.addMessage({
-      text: "test test",
-      withWho: props.message.withWho.name
-    });
   }
-
-  console.log(props.currentUser.id);
 
   return (
     <MessagesStyled>
       <TopMsg history={props.history} withWho={nameToUse} />
-      <MessagesList currentId={props.currentUser.id} messages={conversation} />
+      <MessagesList
+        currentId={props.currentUser.id}
+        messages={props.conversation}
+      />
       <FormStyled onSubmit={handleSubmit}>
         <input type="text" />
         <button>Submit</button>
@@ -72,10 +77,11 @@ function Messages(props) {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  conversation: state.currentUser.currentConversation
 });
 
 export default connect(
   mapStateToProps,
-  { addMessage }
+  { fetchConversation }
 )(Messages);

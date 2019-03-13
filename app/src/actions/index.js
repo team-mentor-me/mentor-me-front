@@ -12,7 +12,9 @@ import {
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_ATTEMPT,
   FETCH_QUESTION_ATTEMPT,
-  FETCH_QUESTION_SUCCESS
+  FETCH_QUESTION_SUCCESS,
+  FETCH_CONVERSATION_ATTEMPT,
+  FETCH_CONVERSATION_SUCCESS
 } from "./types";
 
 // axios.defaults.headers.common["Content-Type"] = "application/json";
@@ -109,7 +111,28 @@ export const updateQuestion = (id, formVals) => async dispatch => {
   });
 };
 
-export const fetchConversations = id => async => {};
+export const fetchConversation = id => async dispatch => {
+  dispatch({ type: FETCH_CONVERSATION_ATTEMPT });
+  const res = await axios.get(`${url}/api/conversations/${id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
+  console.log(res.data);
+  dispatch({ type: FETCH_CONVERSATION_SUCCESS, payload: res.data });
+};
+
+export const fetchConversations = async id => {
+  const res = await axios.get(`${url}/api/conversation-list/${id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
+  return res.data;
+};
+
+export const fetchConversationHelper = async id => {
+  const res = await axios.get(`${url}/api/conversations/${id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
+  return res.data;
+};
 
 // {
 //   ...currentUser,
