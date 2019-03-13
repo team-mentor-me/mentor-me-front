@@ -21,7 +21,7 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
       <h1>Register</h1>
       <Form>
         {touched.username && errors.username && <p>{errors.username}</p>}
-        <Field name="username" type="text" placeholder="Full Name" />
+        <Field name="username" type="text" placeholder="Username" />
         {touched.password && errors.password && <p>{errors.password}</p>}
         <Field name="password" type="password" placeholder="Password" />
         {touched.name && errors.name && <p>{errors.name}</p>}
@@ -54,7 +54,6 @@ const enhancedForm = withFormik({
     name: yup.string().required("Country is required")
   }),
   handleSubmit(formVals, { props }) {
-    console.log("working");
     props.signup(formVals).then(() => props.history.push("/"));
   }
 })(SignUp);

@@ -22,18 +22,28 @@ const url = "https://bw-mentor-me.herokuapp.com";
 export const login = formVals => async dispatch => {
   dispatch({ type: LOGIN_ATTEMPT });
   const res = await axios.post(`${url}/api/login`, formVals);
+  console.log(res.data);
   localStorage.setItem("mentorMeToken", res.data.token);
-  const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`);
+  const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
   console.log(res2.data);
   dispatch({ type: LOGIN_SUCCESS, payload: res2.data });
 };
 
 export const signup = formVals => async dispatch => {
-  const vals = { ...formVals, role: "mentor" };
+  const vals = {
+    ...formVals,
+    role: "mentor",
+    photo:
+      "https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png"
+  };
   dispatch({ type: LOGIN_ATTEMPT });
   const res = await axios.post(`${url}/api/register`, vals);
   localStorage.setItem("mentorMeToken", res.data.token);
-  const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`);
+  const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
   console.log(res2.data);
   dispatch({ type: LOGIN_SUCCESS, payload: res2.data });
 };
@@ -86,10 +96,17 @@ export const logout = id => async dispatch => {
 
 export const fetchQuestion = id => async dispatch => {
   dispatch({ type: FETCH_QUESTION_ATTEMPT });
-  const res = await axios.get(`${url}/api/questions/${id}`, {
+  console.log("working");
+  const res = await axios.get(`${url}/api/posts/${id}`, {
     headers: { Authorization: localStorage.getItem("mentorMeToken") }
   });
   dispatch({ type: FETCH_QUESTION_SUCCESS, payload: res.data });
+};
+
+export const updateQuestion = (id, formVals) => async dispatch => {
+  await axios.patch(`${url}/api/posts/${id}`, formVals, {
+    headers: { Authorization: localStorage.getItem("mentorMeToken") }
+  });
 };
 
 // {
