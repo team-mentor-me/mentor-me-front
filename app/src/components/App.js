@@ -84,7 +84,7 @@ function App(props) {
             return conditionalRendering(EditQuestion, props);
           }}
         />
-        {props.isLoggedIn && <Footer />}
+        {props.isLoggedIn && <Footer user={props.user} />}
       </>
     </BrowserRouter>
   );

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { fetchProfile } from "../../actions";
 
 //styles
 const StyledProfile = styled.div`
@@ -26,8 +27,7 @@ const Img = styled.img`
   margin-left: -50%;
   border: solid white 7px;
   max-width: 30%;
-  max-length: 30%;
-  border-radius: 7px;
+  border-radius: 25%;
 `;
 const H1 = styled.h1`
   font-size: 4rem;
@@ -54,13 +54,21 @@ const P2 = styled.p`
   height: auto;
 `;
 
-function Profile({ profile }) {
+function Profile({ profile, match, fetchProfile }) {
+  useEffect(() => {
+    fetchProfile(match.params.id);
+  }, []);
+
+  if (!profile) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <StyledProfile>
       <Head>
-        <H1>{profile.fullName}</H1>
+        <H1>{profile.name}</H1>
         <P>Skills, Location</P>
-        <Img src={profile.photoUrl} alt="user" />
+        <Img src={profile.photo} alt="user" />
       </Head>
       <H3>about</H3>
       <Title>Sharing my experience with aspiring Photographers</Title>
@@ -72,8 +80,11 @@ function Profile({ profile }) {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    profile: state.currentUser
+    profile: state.currentUser.profileToShow
   };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(
+  mapStateToProps,
+  { fetchProfile }
+)(Profile);
