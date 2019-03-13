@@ -29,8 +29,8 @@ const Img = styled.img`
   margin-bottom: -7%;
   margin-left: -50%;
   border: solid white 7px;
+  border-radius: 40px;
   max-width: 35%;
-  border-radius: 100px;
 `;
 const H1 = styled.h1`
   font-size: 4rem;
@@ -38,6 +38,8 @@ const H1 = styled.h1`
 `;
 const P = styled.p`
   padding-bottom: 10%;
+  padding-top: 3%;
+  color: lightgrey;
 `;
 const Title = styled.div`
   text-align: center;
@@ -75,7 +77,7 @@ function Profile({ profile, match, fetchProfile }) {
     <StyledProfile>
       <Head>
         <H1>{profile.name}</H1>
-        <P>Skills, Location</P>
+        <P>{profile.role}</P>
         <Img src={profile.photo} alt="user" />
       </Head>
       <div>

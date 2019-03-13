@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchQuestion, fetchQuestions } from "../../actions";
 import EditForm from "./EditForm";
+import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
+
+//loader style
+const Load = styled.div` text-align:center; margin-top: 50%;`;
 
 function EditQuestion(props) {
   console.log(props);
@@ -11,7 +16,12 @@ function EditQuestion(props) {
   }, []);
 
   if (!props.testQ) {
-    return <div>Loading...</div>;
+    return <Load><Loader 
+    type="TailSpin"
+    color="#5887F9"
+    height="100"	
+    width="100"
+    /></Load>;;
   }
 
   return <EditForm question={props.testQ} />;

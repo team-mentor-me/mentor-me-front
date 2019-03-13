@@ -24,8 +24,8 @@ const Img = styled.img`
   width: 30%;
   top: 12%;
   left: 35%;
-  border: 3px solid #fff;
-  border-radius: 8px;
+  border: solid white 7px;
+  border-radius: 40px;
 `;
 
 const Edit = styled.div`
