@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { fetchQuestion, fetchQuestions } from "../../actions";
+import { updateQuestion } from "../../actions";
 import EditForm from "./EditForm";
 
 function EditQuestion(props) {
-  console.log(props);
-
-  useEffect(() => {
-    props.fetchQuestions();
-  }, []);
-
-  if (!props.testQ) {
+  if (!props.singleQuestion) {
     return <div>Loading...</div>;
   }
 
-  return <EditForm question={props.testQ} />;
+  return (
+    <EditForm
+      question={props.singleQuestion}
+      updateQuestion={props.updateQuestion}
+      history={props.history}
+    />
+  );
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  singleQuestion: state.questions.singleQuestion,
-  testQ: state.questions.questions[ownProps.match.params.id - 1]
+const mapStateToProps = state => ({
+  singleQuestion: state.questions.singleQuestion
 });
 
 export default connect(
   mapStateToProps,
-  { fetchQuestion, fetchQuestions }
+  { updateQuestion }
 )(EditQuestion);
