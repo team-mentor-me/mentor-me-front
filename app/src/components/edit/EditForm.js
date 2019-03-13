@@ -58,10 +58,17 @@ function EditForm(props) {
   const [post, setPost] = useState(props.question.post);
   const [description, setDescription] = useState(props.question.description);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    props
+      .updateQuestion(props.question.post_id, { post, description })
+      .then(() => props.history.goBack());
+  }
+
   return (
     <div>
       <Intro>Edit your question</Intro>
-      <FormStyled>
+      <FormStyled onSubmit={handleSubmit}>
         <label>Title</label>
         <input
           type="text"

@@ -1,25 +1,61 @@
 import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const ConvStyled = styled.div`
+  a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    padding: 25px;
+    cursor: pointer;
+
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 5px solid #5887f9;
+    h3 {
+      font-weight: 550;
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
+  }
+`;
 
 function ConversationItem(props) {
-  const conv = {
-    ids: [props.conversation.partner_1_id, props.conversation.partner_2_id],
-    names: [
-      props.conversation.partner_1_name,
-      props.conversation.partner_2_name
-    ],
-    photo: [
-      props.conversation.partner_1_photo,
-      props.conversation.partner_2_photo
-    ],
-    msg: props.conversation.messages[props.conversation.messages.length - 1]
-  };
-  console.log(conv.ids);
-  const index = conv.ids.findIndex(el => el === props.current);
+  let nameToUse;
+  let textToUse;
+  for (let i = 0; i < props.conversation.length; i++) {
+    if (props.conversation[i].name !== props.current.fullName) {
+      nameToUse = props.conversation[i].name;
+      break;
+    }
+  }
+
+  console.log(props);
+
+  if (
+    props.conversation[props.conversation.length - 1].post.split(" ").length > 4
+  ) {
+    textToUse =
+      props.conversation[props.conversation.length - 1].post
+        .split(" ")
+        .slice(0, 3)
+        .join(" ") + "...";
+  } else {
+    textToUse = props.conversation[props.conversation.length - 1].post;
+  }
+
+  console.log(props.conversation);
   return (
-    <div>
-      <h3>{conv.names[index]}</h3>
-      <p>{conv.msg.text}</p>
-    </div>
+    <ConvStyled>
+      <Link to={`/conversations/${props.conversation[0].conversation_fk}`}>
+        <h3>{nameToUse}</h3>
+        <p>{textToUse}</p>
+      </Link>
+    </ConvStyled>
   );
 }
 

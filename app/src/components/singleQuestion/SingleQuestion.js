@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
@@ -29,12 +29,14 @@ const Img = styled.img`
 `;
 
 const Edit = styled.div`
-display: flex; flex-direction: row; align-content: flex-end; 
-space-between: none;
-padding: 3px 3px;
-margin: 17px 17px;
-color: red;
-font-size: 2em;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  padding: 3px 3px;
+  padding-left: 200px;
+  margin: 17px 17px;
+  color: red;
+  font-size: 2em;
 `;
 
 const QuestionDiv = styled.div`
@@ -90,25 +92,49 @@ const RenderStyled = styled.div`
   }
 `;
 
-function SingleQuestion({ question, currentUser }) {
+function SingleQuestion({ question, currentUser, fetchQuestion, match }) {
+  useEffect(() => {
+    fetchQuestion(match.params.id);
+  }, []);
+
+  if (!question) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(question);
+
   function displayButtons() {
+    console.log("hihi");
     if (currentUser.id + "" === question.user_id + "") {
+      console.log("hi");
       return (
         <>
           <Edit>
-            <Link style={{ textDecoration: "none" }} to={`/edit/${question.post_id}`}>EDIT</Link>
-            <Link style={{ textDecoration: "none" }} to={`/delete/${question.post_id}`}>DELETE</Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/edit/${question.post_id}`}
+            >
+              EDIT
+            </Link>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/delete/${question.post_id}`}
+            >
+              DELETE
+            </Link>
           </Edit>
         </>
       );
     }
+    return null;
   }
 
   return (
     <div>
-      {console.log(Profile)}
-      {console.log("Question Id of Angello:", question.user_id)}
-      <Link style={{ textDecoration: "none" }} to={`/profile/${question.user_id}`}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={`/profile/${question.user_id}`}
+      >
         <UserDetails>
           <h1>{question.name}</h1>
           <h3>{question.role}</h3>
@@ -139,18 +165,14 @@ function SingleQuestion({ question, currentUser }) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(
-    state.questions.questions.find(
-      q => q.post_id + "" === ownProps.match.params.id
-    )
-  );
+const mapStateToProps = state => {
   return {
-    question: state.questions.questions.find(
-      q => q.post_id + "" === ownProps.match.params.id
-    ),
+    question: state.questions.singleQuestion,
     currentUser: state.currentUser
   };
 };
 
-export default connect(mapStateToProps)(SingleQuestion);
+export default connect(
+  mapStateToProps,
+  
+)(SingleQuestion);

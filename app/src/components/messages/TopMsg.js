@@ -45,8 +45,8 @@ function TopMsg(props) {
     <TopMsgStyled>
       <i onClick={() => props.history.goBack()} className="fas fa-arrow-left" />
       <UserInfo>
-        <img src={props.withWho.photoUrl} alt="the contact" />
-        <h5>{props.withWho.name}</h5>
+        {/* <img src={props.withWho.photoUrl} alt="the contact" /> */}
+        <h5>{props.withWho}</h5>
       </UserInfo>
       <div />
     </TopMsgStyled>

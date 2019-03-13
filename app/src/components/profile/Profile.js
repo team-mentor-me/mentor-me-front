@@ -12,13 +12,17 @@ const StyledProfile = styled.div`
   font-size: 2rem;
   background-color: white;
 `;
+//)
 //loader style
 const Load = styled.div` text-align:center; margin-top: 50%;`;
 const Head = styled.div`
+  background: red;
+  background-image: url(${props=> {console.log('here it be',props); return props.photo}});
+  object-fit: cover;
+  position: relative;
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  background-image: url(${props => props.photo});
   z-index:99;
   border-bottom: solid white 30px;
 `;
@@ -39,8 +43,10 @@ const P = styled.p`
   margin-bottom: -3%;
   font-family: Courgette;
   font-size: 2em;
-  color: #4C5264;
-  text-shadow: 2px 2px #BCC5D3;
+  color: #BCC5D3;
+  text-shadow: 3px 3px #2B2F3B ;
+  font-weight: bold;
+  -webkit-text-stroke: 1px black;
 `;
 const H3 = styled.h3`
   margin-top: 4%;
@@ -73,7 +79,14 @@ const About = styled.div`
     top, rgba(43,47,59,1) 0%, 
     rgba(85,116,247,0.67) 33%,
     rgba(125,185,232,0.02) 98%, 
-    rgba(125,185,232,0) 100%); `;
+    rgba(125,185,232,0) 100%);
+    z-index:1; `;
+const Img2 = styled.img` 
+  margin-bottom: -57%;
+  overflow: hidden;
+  z-index: -1000;
+  object-fit: fill;
+`
 
 function Profile({ profile, match, fetchProfile }) {
   useEffect(() => {
@@ -91,10 +104,9 @@ function Profile({ profile, match, fetchProfile }) {
 
   return (
     <StyledProfile>
-      <Head>
-        <img src={profile.photo} />
+      
+      <Head photo={profile.photo}>
         <H1>{profile.name}</H1>
-       
         <Img src={profile.photo} alt="user" />
         <P>{profile.role}</P>
       </Head>

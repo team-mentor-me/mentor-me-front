@@ -1,71 +1,93 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ConversationItem from "./ConversationItem";
 import { connect } from "react-redux";
+import { Intro } from "../ask/Ask";
+import { fetchConversations, fetchConversationHelper } from "../../actions";
 
-const conversations = [
-  {
-    partner_1_id: 3,
-    partner_2_id: 21,
-    partner_1_photo: "", // not sure if you can get that one
-    partner_2_photo: "", // not sure if you can get that one
-    partner_1_name: "Shelly", // idk
-    partner_2_name: "q", // idk
-    conv_id: 456,
-    messages: [
-      {
-        text: "hi whats up",
-        user_id: 3
-      },
-      {
-        text: "all good",
-        user_id: 21
-      },
-      {
-        text: "I am glad",
-        user_id: 3
-      },
-      {
-        text: "can we start working?",
-        user_id: 3
-      }
-    ]
-  },
-  {
-    partner_1_id: 7,
-    partner_2_id: 21,
-    partner_1_photo: "", // not sure if you can get that one
-    partner_2_photo: "", // not sure if you can get that one
-    partner_1_name: "Daniel", // idk
-    partner_2_name: "q", // idk
-    conv_id: 457,
-    messages: [
-      {
-        text: "hi whats up",
-        user_id: 21
-      },
-      {
-        text: "all good",
-        user_id: 7
-      },
-      {
-        text: "I am glad",
-        user_id: 21
-      },
-      {
-        text: "something else?",
-        user_id: 21
-      }
-    ]
-  }
-];
+// const conversations = [
+//   [
+//     {
+//       post_id: 1,
+//       post: "What's the relationship between aperture and ISO?",
+//       description: "extended question goes here",
+//       category: "Photography",
+//       type: "question",
+//       conversation_fk: 1,
+//       user_id: 1,
+//       name: "Angello Lopez"
+//     },
+//     {
+//       post_id: 4,
+//       post: "message from mentor",
+//       description: "extended question goes here",
+//       category: "Photography",
+//       type: "message",
+//       conversation_fk: 1,
+//       user_id: 4,
+//       name: "Lucy Lee"
+//     }
+//   ],
+//   [
+//     {
+//       post_id: 1,
+//       post: "What's the relationship between aperture and ISO?",
+//       description: "extended question goes here",
+//       category: "Photography",
+//       type: "question",
+//       conversation_fk: 2,
+//       user_id: 1,
+//       name: "Angello Lopez"
+//     },
+//     {
+//       post_id: 4,
+//       post: "how is it going blah blah blah",
+//       description: "extended question goes here",
+//       category: "Development",
+//       type: "message",
+//       conversation_fk: 2,
+//       user_id: 9,
+//       name: "Michael Joe"
+//     }
+//   ]
+// ];
 
 function ConversationList(props) {
+  const [conversations, setConvs] = useState([]);
+
+  async function fetchData() {
+    // props.currentUser.id
+    const data = [];
+    fetchConversations(1)
+      .then(res => {
+        res.forEach(conv_id => {
+          fetchConversationHelper(conv_id).then(res => {
+            console.log(res);
+            data.push(res);
+            // setConvs({ ...conversations,  });
+          });
+        });
+      })
+      .then(() => {
+        console.log("running");
+        setConvs(data);
+      });
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
+  console.log(conversations);
+
+  if (conversations.length === 0) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div>
-      {conversations.map(conv => (
+      <Intro>Conversations</Intro>
+      {Object.values(conversations).map((conv, i) => (
         <ConversationItem
-          current={props.currentUser.id}
-          key={conv.conv_id}
+          current={props.currentUser}
+          key={i}
           conversation={conv}
         />
       ))}

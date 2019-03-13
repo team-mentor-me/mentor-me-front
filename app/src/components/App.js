@@ -43,13 +43,14 @@ function App(props) {
           }}
         />
         <Route
+          exact
           path="/conversations"
           render={props => {
             return conditionalRendering(ConversationList, props);
           }}
         />
         <Route
-          path="/conversation/:id"
+          path="/conversations/:id"
           render={props => {
             return conditionalRendering(Messages, props);
           }}
