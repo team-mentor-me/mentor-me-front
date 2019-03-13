@@ -18,7 +18,7 @@ const Head = styled.div`
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  background: ${props => props.photo || '#60C3FF'};
+  background-image: url(${props => props.photo});
   z-index:99;
   border-bottom: solid white 30px;
 `;
@@ -91,7 +91,8 @@ function Profile({ profile, match, fetchProfile }) {
 
   return (
     <StyledProfile>
-      <Head background={profile.photo}>
+      <Head>
+        <img src={profile.photo} />
         <H1>{profile.name}</H1>
        
         <Img src={profile.photo} alt="user" />
