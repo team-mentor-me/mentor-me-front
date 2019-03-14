@@ -29,7 +29,7 @@ export const login = formVals => async dispatch => {
   const res2 = await axios.get(`${url}/api/user/${res.data.user_id}`, {
     headers: { Authorization: localStorage.getItem("mentorMeToken") }
   });
-  console.log(res2.data);
+  console.log("res2data", res2.data);
   dispatch({ type: LOGIN_SUCCESS, payload: res2.data });
 };
 

@@ -12,7 +12,7 @@ function EditQuestion(props) {
   console.log(props);
 
  
-  if (!props.testQ) {
+  if (!props.updateQuestion) {
     return <Load><Loader 
     type="TailSpin"
     color="#5887F9"

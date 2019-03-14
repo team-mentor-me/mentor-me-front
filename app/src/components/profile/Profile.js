@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { fetchProfile } from "../../actions";
 import Loader from 'react-loader-spinner';
+import { Link } from "react-router-dom";
 
 //styles
 const StyledProfile = styled.div`
@@ -12,7 +13,7 @@ const StyledProfile = styled.div`
   font-size: 2rem;
   background-color: white;
 `;
-//)
+
 //loader style
 const Load = styled.div` text-align:center; margin-top: 50%;`;
 const Head = styled.div`
@@ -32,11 +33,17 @@ const Img = styled.img`
   border: solid white 7px;
   border-radius: 40px;
   max-width: 35%;
+  position: static;
 `;
 const H1 = styled.h1`
   font-size: 4rem;
   margin-top: 17%;
   margin-bottom: 17%;
+  font-family: Courgette;
+  color: #BCC5D3;
+  text-shadow: 3px 3px #2B2F3B ;
+  font-weight: bold;
+  -webkit-text-stroke: 1px black;
 `;
 const P = styled.p`
   padding: 3% 3% 0% 50%;
@@ -70,9 +77,6 @@ const P2 = styled.p`
   height: auto;
   text-align: left;
 `;
-const Tab = styled.div`
-height:auto;
-`;
 const About = styled.div`
   border-top: solid black 2px;
   background:  -moz-linear-gradient(
@@ -81,12 +85,12 @@ const About = styled.div`
     rgba(125,185,232,0.02) 98%, 
     rgba(125,185,232,0) 100%);
     z-index:1; `;
-const Img2 = styled.img` 
-  margin-bottom: -57%;
-  overflow: hidden;
-  z-index: -1000;
-  object-fit: fill;
-`
+const Edit = styled.div`
+  padding: 3px 3px;
+  margin: 17px 17px;
+  color: red;
+  font-size: .5em;
+`;
 
 function Profile({ profile, match, fetchProfile }) {
   useEffect(() => {
@@ -102,6 +106,24 @@ function Profile({ profile, match, fetchProfile }) {
     /></Load>;
   }
 
+  function displayButtons() {
+    console.log("edit profile button here");
+    if (profile.id + "" === profile.user_id + "") 
+      console.log(profile, 'profile')
+      return (
+        <>
+          <Edit>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/edit/${profile.user_id}`}
+              >
+              EDIT PROFILE
+            </Link>
+          </Edit>
+        </>
+      );
+    }
+
   return (
     <StyledProfile>
       
@@ -110,14 +132,12 @@ function Profile({ profile, match, fetchProfile }) {
         <Img src={profile.photo} alt="user" />
         <P>{profile.role}</P>
       </Head>
-      <Tab>
-       
-      </Tab>
       <About>
         <H3>about</H3>
         <Title>Sharing my experience!</Title>
         <P2>{profile.about}</P2>
       </About>
+   { displayButtons()}
     </StyledProfile>
   );
 }
