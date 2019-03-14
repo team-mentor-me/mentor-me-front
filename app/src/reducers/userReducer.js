@@ -40,6 +40,8 @@ export default (state = initialState, action) => {
         loadingAuth: false
       };
       return newUser;
+    case FETCH_PROFILE_ATTEMPT: 
+      return { ...state, profileToShow: false}
     case FETCH_PROFILE_SUCCESS:
       return { ...state, profileToShow: action.payload };
     case FETCH_CONVERSATION_SUCCESS:

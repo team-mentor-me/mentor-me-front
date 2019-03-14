@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
-import { fetchQuestion } from "../../actions";
+import {fetchQuestion} from '../../actions';
 
 const UserDetails = styled.div`
   position: relative;
@@ -23,8 +23,8 @@ const Img = styled.img`
   width: 30%;
   top: 12%;
   left: 35%;
-  border: 3px solid #fff;
-  border-radius: 8px;
+  border: solid white 7px;
+  border-radius: 40px;
 `;
 
 const Edit = styled.div`
@@ -136,18 +136,21 @@ function SingleQuestion({ question, currentUser, fetchQuestion, match }) {
       >
         <UserDetails>
           <h1>{question.name}</h1>
+          <h3>{question.role}</h3>
         </UserDetails>
         <Img src={question.photo} alt="user" />
       </Link>
       <div>
         <QuestionDiv>
+
           <div>
             <RenderStyled>
               <h3>Question</h3>
               {displayButtons()}
             </RenderStyled>
-
+          
             <p>{question.description}</p>
+         
           </div>
 
           <Link style={{ textDecoration: "none" }} to={`/conversation/22`}>
@@ -170,5 +173,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchQuestion }
+  {fetchQuestion}
 )(SingleQuestion);
