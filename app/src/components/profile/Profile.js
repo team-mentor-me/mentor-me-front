@@ -115,7 +115,7 @@ function Profile({ profile, match, fetchProfile }) {
           <Edit>
             <Link
               style={{ textDecoration: "none" }}
-              to={`/edit/${profile.user_id}`}
+              to={`/editprofile/${profile.user_id}`}
               >
               EDIT PROFILE
             </Link>
