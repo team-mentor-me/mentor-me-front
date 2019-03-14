@@ -14,12 +14,14 @@ const Load = styled.div`
 function EditQuestion(props) {
   console.log(props);
 
+
   if (!props.singleQuestion) {
-    return (
-      <Load>
-        <Loader type="TailSpin" color="#5887F9" height="100" width="100" />
-      </Load>
-    );
+    return (<Load><Loader 
+    type="TailSpin"
+    color="#5887F9"
+    height="100"	
+    width="100"
+    /></Load>);
   }
 
   return (

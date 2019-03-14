@@ -93,6 +93,7 @@ function App(props) {
             return conditionalRendering(ProfileEdit, props);
           }}
         />
+
         {props.isLoggedIn && <Footer user={props.user} />}
       </>
     </BrowserRouter>

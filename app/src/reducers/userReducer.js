@@ -14,7 +14,7 @@ const initialState = {
   id: null,
   about: "",
   role: "",
-  isLoggedIn: true,
+  isLoggedIn: false,
   loadingAuth: null,
   profileToShow: null,
   currentConversation: null

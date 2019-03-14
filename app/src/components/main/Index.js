@@ -33,7 +33,7 @@ function Index(props) {
       <Top logout={props.logout} />
       {props.questions.map(question => (
         <Question question={question} key={question.post_id} />
-      ))}
+      )).reverse()}
     </div>
   );
 }

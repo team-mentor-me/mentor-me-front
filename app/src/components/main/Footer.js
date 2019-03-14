@@ -23,7 +23,7 @@ const FooterStyled = styled.footer`
   }
 `;
 
-function Footer(props) {
+function Footer(props) { console.log(props);
   return (
     <FooterStyled>
       <NavLink exact to="/" activeStyle={{ color: "#5887F9" }}>
@@ -38,12 +38,8 @@ function Footer(props) {
       <NavLink to="/ask" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-plus" />
       </NavLink>
-      <NavLink to="/conversations/1" activeStyle={{ color: "#5887F9" }}>
-        <i className="fas fa-user-friends" />
-      </NavLink>
-
       <NavLink exact to="/conversations" activeStyle={{ color: "#5887F9" }}>
-        <i className="fas fa-key" />
+        <i className="fas fa-user-friends" />
       </NavLink>
     </FooterStyled>
   );

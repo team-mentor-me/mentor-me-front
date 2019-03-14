@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Intro } from "../ask/Ask";
 import { BtnPrimary } from "../main/Search";
 
+
 const FormStyled = styled.form`
   margin: 20% auto 0;
   width: 80%;
