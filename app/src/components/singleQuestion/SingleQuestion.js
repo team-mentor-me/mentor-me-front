@@ -4,10 +4,12 @@ import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
 import {fetchQuestion} from '../../actions';
+
 import Loader from 'react-loader-spinner';
 
 //loader style
 const Load = styled.div` text-align:center; margin-top: 50%;`
+
 
 const UserDetails = styled.div`
   position: relative;

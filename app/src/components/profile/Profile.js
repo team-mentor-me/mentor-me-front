@@ -85,12 +85,14 @@ const About = styled.div`
     rgba(125,185,232,0.02) 98%, 
     rgba(125,185,232,0) 100%);
     z-index:1; `;
+
 const Edit = styled.div`
   padding: 3px 3px;
   margin: 17px 17px;
   color: red;
   font-size: .5em;
 `;
+
 
 function Profile({ profile, match, fetchProfile }) {
   useEffect(() => {
