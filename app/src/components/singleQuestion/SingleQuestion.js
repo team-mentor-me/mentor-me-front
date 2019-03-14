@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
-import Profile from "../profile/Profile";
-
+import {fetchQuestion} from '../../actions';
 
 const UserDetails = styled.div`
   position: relative;
@@ -174,5 +173,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  
+  {fetchQuestion}
 )(SingleQuestion);

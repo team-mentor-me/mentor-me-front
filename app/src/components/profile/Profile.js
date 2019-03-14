@@ -32,11 +32,17 @@ const Img = styled.img`
   border: solid white 7px;
   border-radius: 40px;
   max-width: 35%;
+  position: static;
 `;
 const H1 = styled.h1`
   font-size: 4rem;
   margin-top: 17%;
   margin-bottom: 17%;
+  font-family: Courgette;
+  color: #BCC5D3;
+  text-shadow: 3px 3px #2B2F3B ;
+  font-weight: bold;
+  -webkit-text-stroke: 1px black;
 `;
 const P = styled.p`
   padding: 3% 3% 0% 50%;
@@ -81,12 +87,6 @@ const About = styled.div`
     rgba(125,185,232,0.02) 98%, 
     rgba(125,185,232,0) 100%);
     z-index:1; `;
-const Img2 = styled.img` 
-  margin-bottom: -57%;
-  overflow: hidden;
-  z-index: -1000;
-  object-fit: fill;
-`
 
 function Profile({ profile, match, fetchProfile }) {
   useEffect(() => {
