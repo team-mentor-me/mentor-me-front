@@ -29,7 +29,10 @@ function Footer(props) { console.log(props);
       <NavLink exact to="/" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-home" />
       </NavLink>
-      <NavLink to={`/profile/${props.user.id}`}>
+      <NavLink
+        activeStyle={{ color: "#5887F9" }}
+        to={`/profile/${props.user.id}`}
+      >
         <i className="far fa-user" />
       </NavLink>
       <NavLink to="/ask" activeStyle={{ color: "#5887F9" }}>

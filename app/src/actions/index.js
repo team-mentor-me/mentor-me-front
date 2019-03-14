@@ -121,10 +121,19 @@ export const fetchConversation = id => async dispatch => {
 };
 
 export const fetchConversations = async id => {
+  const toReturn = [];
   const res = await axios.get(`${url}/api/conversation-list/${id}`, {
     headers: { Authorization: localStorage.getItem("mentorMeToken") }
   });
-  return res.data;
+  await res.data.forEach(async conv_id => {
+    const data = await axios.get(`${url}/api/conversations/${conv_id}`, {
+      headers: { Authorization: localStorage.getItem("mentorMeToken") }
+    });
+    console.log(data.data);
+    toReturn.push(data.data);
+  });
+  console.log(toReturn);
+  return toReturn;
 };
 
 export const fetchConversationHelper = async id => {

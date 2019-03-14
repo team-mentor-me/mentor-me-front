@@ -14,6 +14,7 @@ import Profile from "./profile/Profile";
 import Delete from "./delete/Delete";
 import EditQuestion from "./edit/EditQuestion";
 import ConversationList from "./conversations/ConversationList";
+import ProfileEdit from "./profile/ProfileEdit";
 
 function App(props) {
   function conditionalRendering(Component, additionalProps) {
@@ -80,17 +81,19 @@ function App(props) {
           }}
         />
         <Route
+          exact
           path="/edit/:id"
           render={props => {
             return conditionalRendering(EditQuestion, props);
           }}
         />
-        <Route path="/edit/profile/id"
-        render={props => {
-          return conditionalRendering(EditQuestion, props);
-        }}
-      />
-      
+        <Route
+          path="/edit/profile/:id"
+          render={props => {
+            return conditionalRendering(ProfileEdit, props);
+          }}
+        />
+
         {props.isLoggedIn && <Footer user={props.user} />}
       </>
     </BrowserRouter>
