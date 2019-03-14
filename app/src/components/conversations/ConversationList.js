@@ -4,79 +4,25 @@ import { connect } from "react-redux";
 import { Intro } from "../ask/Ask";
 import { fetchConversations, fetchConversationHelper } from "../../actions";
 
-// const conversations = [
-//   [
-//     {
-//       post_id: 1,
-//       post: "What's the relationship between aperture and ISO?",
-//       description: "extended question goes here",
-//       category: "Photography",
-//       type: "question",
-//       conversation_fk: 1,
-//       user_id: 1,
-//       name: "Angello Lopez"
-//     },
-//     {
-//       post_id: 4,
-//       post: "message from mentor",
-//       description: "extended question goes here",
-//       category: "Photography",
-//       type: "message",
-//       conversation_fk: 1,
-//       user_id: 4,
-//       name: "Lucy Lee"
-//     }
-//   ],
-//   [
-//     {
-//       post_id: 1,
-//       post: "What's the relationship between aperture and ISO?",
-//       description: "extended question goes here",
-//       category: "Photography",
-//       type: "question",
-//       conversation_fk: 2,
-//       user_id: 1,
-//       name: "Angello Lopez"
-//     },
-//     {
-//       post_id: 4,
-//       post: "how is it going blah blah blah",
-//       description: "extended question goes here",
-//       category: "Development",
-//       type: "message",
-//       conversation_fk: 2,
-//       user_id: 9,
-//       name: "Michael Joe"
-//     }
-//   ]
-// ];
-
-function ConversationList(props) {
+ function ConversationList(props) {
   const [conversations, setConvs] = useState([]);
 
-  async function fetchData() {
-    // props.currentUser.id
-    const data = [];
-    fetchConversations(1)
+//This is effectively componentWillMount + componentDidMount (I think) and we are using it to update state with setConvs
+  useEffect(() => {
+  const data = [];
+    fetchConversations(1) //< --- honestly not entirely sure why the parameter of (1) needed to happen. Didn't look into it, but I trust the logic. Seems to work ¯\_(ツ)_/¯
       .then(res => {
         res.forEach(conv_id => {
-          fetchConversationHelper(conv_id).then(res => {
-            console.log(res);
+          fetchConversationHelper(conv_id).then(res => { // < --- calling the helper to get stuffs
             data.push(res);
-            // setConvs({ ...conversations,  });
+            const newState = conversations.concat(data); // < just concat-ing res into conversations changed the array into an object or did some other weird stuff to it, didn't want that so I made an array "data" to concat instead.
+            setConvs(newState); // < --- here we set state. this is basically this.setState({ conversations: [...newState]}) since I continuously concat data onto the end of the existing array, it wont be overwritten with state change
           });
         });
       })
-      .then(() => {
-        console.log("running");
-        setConvs(data);
-      });
-  }
-  useEffect(() => {
-    fetchData();
-  }, []);
-  console.log(conversations);
+  }, []); 
 
+  //If the conversations have not yet been received from axios request, return loading
   if (conversations.length === 0) {
     return <h1>Loading...</h1>;
   }
@@ -84,7 +30,7 @@ function ConversationList(props) {
   return (
     <div>
       <Intro>Conversations</Intro>
-      {Object.values(conversations).map((conv, i) => (
+      {conversations.map((conv, i) => ( // <--- map through conversation items . This actually *might* be unnecessary, since I map on the conversationItiem.js
         <ConversationItem
           current={props.currentUser}
           key={i}
@@ -100,3 +46,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(ConversationList);
+
