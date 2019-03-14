@@ -85,6 +85,12 @@ function App(props) {
             return conditionalRendering(EditQuestion, props);
           }}
         />
+        <Route path="/edit/profile/id"
+        render={props => {
+          return conditionalRendering(EditQuestion, props);
+        }}
+      />
+      
         {props.isLoggedIn && <Footer user={props.user} />}
       </>
     </BrowserRouter>

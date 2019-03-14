@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateQuestion } from "../../actions";
-import EditForm from "./EditForm";
+import EditFormP from "./EditFormP";
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ function EditQuestion(props) {
   console.log(props);
 
  
-  if (!props.updateQuestion) {
+  if (!props.updateProfile) {
     return <Load><Loader 
     type="TailSpin"
     color="#5887F9"
@@ -22,19 +22,17 @@ function EditQuestion(props) {
   }
 
   return (
-    <EditForm
-      question={props.singleQuestion}
-      updateQuestion={props.updateQuestion}
+    <EditFormP
+      about={props.currentUser.about}
       history={props.history}
     />
   );
 }
 
 const mapStateToProps = state => ({
-  singleQuestion: state.questions.singleQuestion
+    currentUser: state.currentUser
 });
 
 export default connect(
-  mapStateToProps,
-  { updateQuestion }
+  mapStateToProps
 )(EditQuestion);

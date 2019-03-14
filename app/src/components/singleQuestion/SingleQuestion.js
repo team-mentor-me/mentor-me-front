@@ -5,6 +5,12 @@ import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
 import {fetchQuestion} from '../../actions';
 
+import Loader from 'react-loader-spinner';
+
+//loader style
+const Load = styled.div` text-align:center; margin-top: 50%;`
+
+
 const UserDetails = styled.div`
   position: relative;
   h1 {
@@ -97,7 +103,12 @@ function SingleQuestion({ question, currentUser, fetchQuestion, match }) {
   }, []);
 
   if (!question) {
-    return <div>Loading...</div>;
+    return <Load><Loader 
+    type="TailSpin"
+    color="#5887F9"
+    height="100"	
+    width="100"
+    /></Load>;
   }
 
   console.log(question);
@@ -106,6 +117,7 @@ function SingleQuestion({ question, currentUser, fetchQuestion, match }) {
     console.log("hihi");
     if (currentUser.id + "" === question.user_id + "") {
       console.log("hi");
+      console.log(question)
       return (
         <>
           <Edit>
@@ -145,10 +157,10 @@ function SingleQuestion({ question, currentUser, fetchQuestion, match }) {
 
           <div>
             <RenderStyled>
-              <h3>Question</h3>
-              {displayButtons()}
+              <h3>{question.post}</h3>
+             
             </RenderStyled>
-          
+            {displayButtons()}
             <p>{question.description}</p>
          
           </div>
