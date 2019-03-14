@@ -53,28 +53,20 @@ import { fetchConversations, fetchConversationHelper } from "../../actions";
 
 function ConversationList(props) {
   const [conversations, setConvs] = useState([]);
-
-  async function fetchData() {
-    // props.currentUser.id
-    const data = [];
-    fetchConversations(1)
-      .then(res => {
-        res.forEach(conv_id => {
-          fetchConversationHelper(conv_id).then(res => {
-            console.log(res);
-            data.push(res);
-            // setConvs({ ...conversations,  });
-          });
-        });
-      })
-      .then(() => {
-        console.log("running");
-        setConvs(data);
-      });
-  }
   useEffect(() => {
-    fetchData();
+    fetchData().then(res => {
+      setTimeout(() => {
+        setConvs(res);
+      }, 1000);
+    });
   }, []);
+
+  const fetchData = async () => {
+    const res = await fetchConversations(1);
+    console.log(res.length);
+    return res;
+  };
+
   console.log(conversations);
 
   if (conversations.length === 0) {
@@ -84,7 +76,7 @@ function ConversationList(props) {
   return (
     <div>
       <Intro>Conversations</Intro>
-      {Object.values(conversations).map((conv, i) => (
+      {conversations.map((conv, i) => (
         <ConversationItem
           current={props.currentUser}
           key={i}
