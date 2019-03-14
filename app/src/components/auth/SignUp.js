@@ -5,8 +5,11 @@ import { signup } from "../../actions";
 import { Redirect } from "react-router-dom";
 import { LoginStyled } from "./Login";
 import { Link } from "react-router-dom";
-
+import styled from 'styled-components';
 import { connect } from "react-redux";
+
+const H1 = styled.h1`
+  margin-top:-20%;`;
 
 const SignUp = ({ errors, touched, isLoggedIn }) => {
   console.log("mounted");
@@ -18,7 +21,7 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
 
   return (
     <LoginStyled register>
-      <h1>Register</h1>
+      <H1>Register</H1>
       <Form>
         {touched.username && errors.username && <p>{errors.username}</p>}
         <Field name="username" type="text" placeholder="Username" />

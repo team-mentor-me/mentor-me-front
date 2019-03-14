@@ -29,7 +29,7 @@ function Footer(props) {
       <NavLink exact to="/" activeStyle={{ color: "#5887F9" }}>
         <i className="fas fa-home" />
       </NavLink>
-      <NavLink to={`/profile/${props.user.id}`}>
+      <NavLink to={`/profile/${props.user_id}`}>
         <i className="far fa-user" />
       </NavLink>
       <NavLink to="/ask" activeStyle={{ color: "#5887F9" }}>
