@@ -23,38 +23,26 @@ const ConvStyled = styled.div`
     }
   }
 `;
-
+//Each individual item that appears in our list. Each should link to the corresponding messages associated with it. 
 function ConversationItem(props) {
-  let nameToUse;
-  let textToUse;
-  for (let i = 0; i < props.conversation.length; i++) {
-    if (props.conversation[i].name !== props.current.fullName) {
-      nameToUse = props.conversation[i].name;
-      break;
-    }
-  }
-
-  console.log(props);
-
-  if (
-    props.conversation[props.conversation.length - 1].post.split(" ").length > 4
-  ) {
-    textToUse =
-      props.conversation[props.conversation.length - 1].post
-        .split(" ")
-        .slice(0, 3)
-        .join(" ") + "...";
-  } else {
-    textToUse = props.conversation[props.conversation.length - 1].post;
-  }
-
-  console.log(props.conversation);
   return (
     <ConvStyled>
-      <Link to={`/conversations/${props.conversation[0].conversation_fk}`}>
-        <h3>{nameToUse}</h3>
-        <p>{textToUse}</p>
-      </Link>
+      {/* props.conversation is an array of objects*/}
+      {props.conversation.map(item => (
+        <Link to={`/conversations/${item.post_id}`}>
+          {" "} 
+          {/* My JS prettier extension added the quotes above so I could comment this - you may want to assign a key to each child here */}
+          <h3>{item.name}</h3>
+          <p>
+            {item.post.split(" ").length > 1 // < ---- this is all your substringing logic from before, but condensed here in mapping
+              ? item.post
+                  .split(" ")
+                  .slice(0, 3)
+                  .join(" ") + "..."
+              : item.post}
+          </p>
+        </Link>
+      ))}
     </ConvStyled>
   );
 }
