@@ -105,7 +105,7 @@ function Profile({ profile, match, fetchProfile, currentId }) {
       return <Link to={`/edit/profile/${currentId}`}>Edit Profile</Link>;
     }
   }
-
+  // loading
   if (!profile) {
     return (
       <Load>
