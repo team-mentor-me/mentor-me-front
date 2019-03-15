@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Loader from 'react-loader-spinner';
 
 const ConvStyled = styled.div`
   a {
@@ -23,8 +24,25 @@ const ConvStyled = styled.div`
     }
   }
 `;
+const Load = styled.div`
+  text-align: center;
+  margin-top: 50%;
+`;
 //Each individual item that appears in our list. Each should link to the corresponding messages associated with it. 
 function ConversationItem(props) {
+
+  //If the conversations have not yet been received from axios request, return loading
+  if (!props) {
+    return (
+      <Load>
+        <Loader type="TailSpin" 
+                color="#5887F9" 
+                height="100" 
+                width="100" />
+      </Load>
+    );
+  }
+
   return (
     <ConvStyled>
       {/* props.conversation is an array of objects*/}

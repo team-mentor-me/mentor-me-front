@@ -3,7 +3,14 @@ import ConversationItem from "./ConversationItem";
 import { connect } from "react-redux";
 import { Intro } from "../ask/Ask";
 import { fetchConversations, fetchConversationHelper } from "../../actions";
+import styled from 'styled-components';
+import Loader from 'react-loader-spinner';
 
+//loader style
+const Load = styled.div`
+  text-align: center;
+  margin-top: 50%;
+`;
 function ConversationList(props) {
   const [conversations, setConvs] = useState([]);
   useEffect(() => {
@@ -24,7 +31,11 @@ function ConversationList(props) {
 
   //If the conversations have not yet been received from axios request, return loading
   if (conversations.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <Load>
+        <Loader type="TailSpin" color="#5887F9" height="100" width="100" />
+      </Load>
+    );
   }
 
   return (

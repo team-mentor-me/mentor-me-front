@@ -1,4 +1,18 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
+
+const Input = styled.input`
+display:flex;
+flex-direction: column;
+margin: 5% auto;`;
+const Area = styled.textarea`
+display:flex;
+flex-direction: column;
+margin: 5% auto;`;
+const Button = styled.button`
+display:flex;
+flex-direction: column;
+margin: 5% auto;`;
 
 function ProfileEditForm(props) {
   console.log(props);
@@ -15,32 +29,32 @@ function ProfileEditForm(props) {
 
   return (
     <form onSubmit={e => props.handleSubmit(e, values)}>
-      <input
+      <Input
         onChange={handleChange}
         value={values.name}
         name="name"
         type="text"
       />
-      <input
+      <Input
         onChange={handleChange}
         value={values.role}
         name="role"
         type="text"
       />
-      <input
+      <Input
         onChange={handleChange}
         value={values.photo}
         name="photo"
         type="text"
       />
-      <textarea
+      <Area
         onChange={handleChange}
         value={values.about}
         name="about"
         cols="30"
         rows="10"
       />
-      <button type="submit">Submit</button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 }

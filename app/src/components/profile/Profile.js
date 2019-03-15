@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { fetchProfile } from "../../actions";
-
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
-
 //styles
 const StyledProfile = styled.div`
   display: flex;
@@ -14,7 +12,6 @@ const StyledProfile = styled.div`
   font-size: 2rem;
   background-color: white;
 `;
-
 //loader style
 const Load = styled.div`
   text-align: center;
@@ -81,7 +78,6 @@ const P2 = styled.p`
   height: auto;
   text-align: left;
 `;
-
 const Tab = styled.div`
   height: auto;
 `;
@@ -96,23 +92,19 @@ const About = styled.div`
   );
   z-index: 1;
 `;
-
 const Edit = styled.div`
   padding: 3px 3px;
   margin: 17px 17px;
   color: red;
-  font-size: .5em;
+  font-size: 0.5em;
 `;
-
-
-function Profile({ profile, match, fetchProfile }) {
+function Profile({ profile, match, fetchProfile, currentId }) {
   useEffect(() => {
     fetchProfile(match.params.id);
   }, [match.params.id]);
-
   function displayEdit() {
     if (match.params.id + "" === currentId + "") {
-      return <Link to={`/edit/profile/${currentId}`}>Edit Profile</Link>;
+      return <Edit><Link to={`/edit/profile/${currentId}`}>Edit Profile</Link></Edit>;
     }
   }
   // loading
@@ -123,25 +115,7 @@ function Profile({ profile, match, fetchProfile }) {
       </Load>
     );
   }
-
-  function displayButtons() {
-    console.log("edit profile button here");
-    if (profile.id + "" === profile.user_id + "") 
-      console.log(profile, 'profile')
-      return (
-        <>
-          <Edit>
-            <Link
-              style={{ textDecoration: "none" }}
-              to={`/editprofile/${profile.user_id}`}
-              >
-              EDIT PROFILE
-            </Link>
-          </Edit>
-        </>
-      );
-    }
-
+  
   return (
     <StyledProfile>
       <Head photo={profile.photo}>
@@ -150,18 +124,15 @@ function Profile({ profile, match, fetchProfile }) {
         <P>{profile.role}</P>
       </Head>
       <Tab />
-
       <About>
-        {displayEdit()}
         <H3>about</H3>
         <Title>Sharing my experience!</Title>
         <P2>{profile.about}</P2>
       </About>
-   { displayButtons()}
+      {displayEdit()}
     </StyledProfile>
   );
 }
-
 const mapStateToProps = state => {
   console.log(state);
   return {
@@ -169,7 +140,6 @@ const mapStateToProps = state => {
     currentId: state.currentUser.id
   };
 };
-
 export default connect(
   mapStateToProps,
   { fetchProfile }

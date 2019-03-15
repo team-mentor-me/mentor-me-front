@@ -10,6 +10,13 @@ const Load = styled.div`
   text-align: center;
   margin-top: 50%;
 `;
+const H1 = styled.h1`
+font-size: 2.2rem;
+    font-family: "Gibson", sans-serif;
+    color: #5887f9;
+    font-weight: 550;
+    text-align:center;
+    margin-top:15%;`;
 
 function ProfileEdit(props) {
   if (!props.currentUser) {
@@ -35,7 +42,7 @@ function ProfileEdit(props) {
 
   return (
     <div>
-      <h1>Edit Profile</h1>
+      <H1>Edit Profile</H1>
       <ProfileEditForm user={props.currentUser} handleSubmit={handleSubmit} />
     </div>
   );

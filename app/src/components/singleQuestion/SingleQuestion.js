@@ -165,7 +165,7 @@ function SingleQuestion({ question, currentUser, fetchQuestion, match }) {
          
           </div>
 
-          <Link style={{ textDecoration: "none" }} to={`/conversation/22`}>
+          <Link style={{ textDecoration: "none" }} to={`/conversation/conversation_id`}>
             <BtnPrimary width="87%">
               <i className="fas fa-user-plus" /> Respond
             </BtnPrimary>
