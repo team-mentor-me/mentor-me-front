@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { login } from "../../actions";
 import { Redirect, Link } from "react-router-dom";
 import styled from "styled-components";
+import {device} from '../main/device';
 
 import { connect } from "react-redux";
 
@@ -28,12 +29,19 @@ export const LoginStyled = styled.div`
     font-size: 4rem;
     font-weight: 550;
     color: #fff;
+    @media ${device.desktop}{
+    margin-top:5%;
+    }
   }
 
   form {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 20%;
+    @media ${device.desktop}{
+    max-width:900px;
+    margin-top: -6%;
+    }
 
     input {
       padding: 15px;
@@ -84,6 +92,13 @@ export const LoginStyled = styled.div`
     text-align: center;
   }
 `;
+const Reg = styled.div`
+margin-bottom: 500px;
+@media ${device.desktop}{
+  margin-top: -14%;
+  margin-bottom: 500px;
+}`;
+
 
 const Login = ({ errors, touched, isLoggedIn }) => {
   if (isLoggedIn) {
@@ -100,7 +115,7 @@ const Login = ({ errors, touched, isLoggedIn }) => {
         <Field name="password" type="password" placeholder="password" />
         <button>Sign In</button>
       </Form>
-      <Link to="/signup">Register</Link>
+      <Reg><Link to="/signup">Register</Link></Reg>   
     </LoginStyled>
   );
 };

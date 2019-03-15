@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Message from "./Message";
 
+
 const MessagesListStyled = styled.div`
   margin-top: 5%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 `;
 
 function MessagesList(props) {

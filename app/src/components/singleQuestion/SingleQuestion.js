@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { BtnPrimary } from "../main/Search";
 import { Link } from "react-router-dom";
-import {fetchQuestion} from '../../actions';
+import {fetchQuestion, fetchProfile} from '../../actions';
+import {device} from '../main/device';
 
 import Loader from 'react-loader-spinner';
 
@@ -31,6 +32,16 @@ const Img = styled.img`
   left: 35%;
   border: solid white 7px;
   border-radius: 40px;
+  @media ${device.desktop}{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    top: 31%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+  }
 `;
 
 const Edit = styled.div`
@@ -51,8 +62,12 @@ const QuestionDiv = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* align-items: center; */
   justify-content: space-between;
+  @media ${device.desktop}{
+    margin-top: 2%;
+    width: 50%;
+    margin: auto;
+  }
   div {
     h3 {
       width: 100%;

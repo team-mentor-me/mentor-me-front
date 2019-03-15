@@ -7,10 +7,15 @@ import { LoginStyled } from "./Login";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { connect } from "react-redux";
-
+import {device} from '../main/device';
 const H1 = styled.h1`
-  margin-top:-20%;`;
-
+  margin-top:-25%;`;
+const Log = styled.div`
+margin-bottom: 500px;
+@media ${device.desktop}{
+  margin-top: -14%;
+}
+`;
 const SignUp = ({ errors, touched, isLoggedIn }) => {
   console.log("mounted");
   if (isLoggedIn) {
@@ -36,7 +41,9 @@ const SignUp = ({ errors, touched, isLoggedIn }) => {
           <i className="far fa-edit" /> Register
         </button>
       </Form>
+      <Log>
       <Link to="/login">Login</Link>
+      </Log>
     </LoginStyled>
   );
 };
