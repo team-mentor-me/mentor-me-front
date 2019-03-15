@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { fetchProfile } from "../../actions";
 
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
 //styles
@@ -101,11 +101,10 @@ const Edit = styled.div`
   padding: 3px 3px;
   margin: 17px 17px;
   color: red;
-  font-size: .5em;
+  font-size: 0.5em;
 `;
 
-
-function Profile({ profile, match, fetchProfile }) {
+function Profile({ profile, match, fetchProfile, currentId }) {
   useEffect(() => {
     fetchProfile(match.params.id);
   }, [match.params.id]);
@@ -126,21 +125,21 @@ function Profile({ profile, match, fetchProfile }) {
 
   function displayButtons() {
     console.log("edit profile button here");
-    if (profile.id + "" === profile.user_id + "") 
-      console.log(profile, 'profile')
-      return (
-        <>
-          <Edit>
-            <Link
-              style={{ textDecoration: "none" }}
-              to={`/editprofile/${profile.user_id}`}
-              >
-              EDIT PROFILE
-            </Link>
-          </Edit>
-        </>
-      );
-    }
+    if (profile.id + "" === profile.user_id + "")
+      console.log(profile, "profile");
+    return (
+      <>
+        <Edit>
+          <Link
+            style={{ textDecoration: "none" }}
+            to={`/editprofile/${profile.user_id}`}
+          >
+            EDIT PROFILE
+          </Link>
+        </Edit>
+      </>
+    );
+  }
 
   return (
     <StyledProfile>
@@ -157,7 +156,7 @@ function Profile({ profile, match, fetchProfile }) {
         <Title>Sharing my experience!</Title>
         <P2>{profile.about}</P2>
       </About>
-   { displayButtons()}
+      {displayButtons()}
     </StyledProfile>
   );
 }
