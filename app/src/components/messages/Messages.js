@@ -4,16 +4,23 @@ import TopMsg from "./TopMsg";
 import MessagesList from "./MessagesList";
 import styled from "styled-components";
 import { fetchConversation } from "../../actions";
+import Loader from "react-loader-spinner";
 
 // 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
+
+//loader style
+const Load = styled.div`
+  text-align: center;
+  margin-top: 50%;
+`;
 
 const MessagesStyled = styled.div`
   height: 90vh;
 `;
 
 const FormStyled = styled.form`
-  bottom: 0;
-  background: black;
+  margin-top: 60%;
+  text-align:center;
   color: white;
 `;
 
@@ -46,7 +53,9 @@ function Messages(props) {
   }, []);
 
   if (!props.conversation) {
-    return <div>Loading</div>;
+    return (<Load>
+          <Loader type="TailSpin" color="#5887F9" height="100" width="100" />
+          </Load>);
   }
 
   let nameToUse;
