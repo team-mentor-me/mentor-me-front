@@ -1,39 +1,23 @@
 # Mentor Me
-___
 
-### Hunter's notes
-#### Don't **Fork** the Repo
-##### Git Instructions
+Mentor Me is an App created to bring together student and teacher into a one on one atmosphere. 
 
-- Every frontend/UI developer will be working in this repo, but on separate branches.
+Modern education has seen the relationship between student and teacher widen for the several past decades, larger classroom sizes and less one on one time has left many students feeling jaded and lost in the transition between beginner and mastery. Our app helps erase this gap! 
 
-- After git cloning THIS repo:
-   - `git checkout master` <---- Puts you on master branch.
+The mentor experience has never been smoother. Our Question Feed allows a mentor to quickly scan questions of potential students related to the mentor's expertise. 
 
-   - You may need to `git pull` before creating a new branch. <--- Git pull fetches and downloads from the branch you are in and merges it with local repo
-   
-  - `git branch [firstname-lastname]` <-----  Creates the branch with your first and last name as branch name. 
-     
-  - `git checkout [firstname-lastname]` <---- Switches your working directory into your newly created branch.
-  
-  - `git push -u origin [firstname-lastname]` <-- Pushes that branch to GitHub.
-      - Subsequent pushes after the above push can be done with `git push [firstname-lastname]`.
-   
-   - You can then `git commit` into that branch with all your changes.
+![Question Feed](img-exp/questionfeed.png)
 
-   - **Once you have a fully functional feature:**
-      - Submit a PR through GitHub
-         -  If there are any problems, I will work you through it.
+Then they can easily start a conversation with their new student.
 
-   - Don't commit your node_modules directory!!! Within your `.gitignore` file, make sure you have typed `/node_modules` on a new line.
-   
-   Sometimes you may need to try ```git pull origin master``` and do somefunky stuff. If you get stuck, message me and I will do my best to help you. 
+![Question Page](img-exp/question.png)
 
-##### Initial Instructions
+Students can create a profile and post a question to the Question Feed
 
-- You still need to run `yarn install` to get your node_modules.
+![Sign up today!](img-exp/reg.png)
 
-- Netlify deployed site: https://epic-meitner-afa3b4.netlify.com/
+![Ask a question](img-exp/ask.png)
 
-- Reach out if you need help.
+Both student and mentor can set up their own unique profiles.
 
+![Profile](img-exp/profile.png)

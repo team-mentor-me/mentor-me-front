@@ -41,8 +41,8 @@ const H1 = styled.h1`
   margin-top: 17%;
   margin-bottom: 17%;
   font-family: Courgette;
-  color: #bcc5d3;
-  text-shadow: 3px 3px #2b2f3b;
+  color: #000;
+  text-shadow: 3px 3px #FFFFFF;
   font-weight: bold;
   -webkit-text-stroke: 1px black;
 `;
