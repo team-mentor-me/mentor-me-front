@@ -1,5 +1,7 @@
 # Mentor Me
 
+https://team-mentor-me.github.io/mentor-me-landing/
+
 Mentor Me is an App created to bring together student and teacher into a one on one atmosphere. 
 
 Modern education has seen the relationship between student and teacher widen for the several past decades, larger classroom sizes and less one on one time has left many students feeling jaded and lost in the transition between beginner and mastery. Our app helps erase this gap! 
@@ -22,4 +24,4 @@ Both student and mentor can set up their own unique profiles.
 
 ![Profile](img-exp/profile.png)
 
-https://team-mentor-me.github.io/mentor-me-landing/
+
